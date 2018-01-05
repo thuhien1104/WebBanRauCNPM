@@ -331,6 +331,9 @@
     <Content Include="Views\Admin\SuaRau.cshtml" />
     <Content Include="Views\NguoiDung\ThongTinKhachHang.cshtml" />
     <Content Include="Views\NguoiDung\SuaThongTinKH.cshtml" />
+    <Content Include="Views\Admin\XemDonDatHang.cshtml" />
+    <Content Include="Views\Admin\SuaDonHang.cshtml" />
+    <Content Include="Views\Admin\DanhSachDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

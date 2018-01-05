@@ -1,0 +1,71 @@
+﻿@model WebBanRauProject.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "XemDonDatHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XemDonDatHang</h2>
+
+<div>
+    <h4>DONDATHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Thanh toán:
+        </dt>
+
+        <dd>
+            <text>
+
+                @Html.RadioButton("DATHANHTOAN", "true") Đã thanh toán
+
+
+                @Html.RadioButton("DATHANHTOAN", "false") Chưa thanh toán
+
+            </text>
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng:
+        </dt>
+
+        <dd>
+            <text>
+                @Html.RadioButton("TINHTRANGGIAOHANG", "true") Đã giao hàng
+
+
+                @Html.RadioButton("TINHTRANGGIAOHANG", "false") Chưa giao hàng
+            </text>
+        </dd>
+
+        <dt>
+            Ngày đặt hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYDAT)
+        </dd>
+
+        <dt>
+            Ngày giao hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYGIAO)
+        </dd>
+
+        <dt>
+            Tên khách hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Xem chi tiết", "ChiTietDonHang", new { id = Model.MADH }) |
+    @Html.ActionLink("Cập nhập đơn hàng", "CapNhapDonHang", new { id = Model.MADH })
+</p>

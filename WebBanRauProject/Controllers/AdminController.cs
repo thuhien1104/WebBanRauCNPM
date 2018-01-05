@@ -220,6 +220,40 @@ namespace WebBanRauProject.Controllers
 
             return RedirectToAction("Chitietrau",new { id = id});
         }
+
+        //Admin co the xem sua don dat hang
+
+        public ActionResult DanhSachDonHang()
+        {
+            ViewBag.DaThanhToan = "Đã thanh toán";
+            ViewBag.ChuaThanhToan = "Chưa thanh toán";
+            List<DONDATHANG> lstDonHang = data.DONDATHANGs.ToList();
+            return View(lstDonHang);
+        }
+        public ActionResult XemDonDatHang(int id)
+        {
+            var donhang = data.DONDATHANGs.First(d => d.MADH == id);
+            return View(donhang);
+        }
+        [HttpGet]
+        public ActionResult SuaDonHang(int id)
+        {
+            var donhang = data.DONDATHANGs.First(d => d.MADH == id);
+            return View(donhang);
+        }
+        [HttpPost]
+        public ActionResult SuaDonHang(int id,FormCollection collection)
+        {
+            var donhang = data.DONDATHANGs.First(d => d.MADH == id);
+
+            bool daThanhToan = bool.Parse(collection["DATHANHTOAN"]);
+            bool tinhTrangGiaoHang = bool.Parse(collection["TINHTRANGGIAOHANG"]);
+
+            UpdateModel(donhang);
+            data.SubmitChanges();
+
+            return RedirectToAction("DanhSachDonHang");
+        }
     }
 
 }
