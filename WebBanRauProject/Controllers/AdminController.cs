@@ -162,54 +162,19 @@ namespace WebBanRauProject.Controllers
         {
             return null;
         }
-        [HttpGet]
-        public ActionResult SuaKH(int makh)
-        {
-            //lay doi tuong
-            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
-            ViewBag.MaKH = kh.MAKH;
-            if (kh == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            return View(kh);
-        }
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult SuaKH(KHACHHANG khachhang)
-        {
-
-
-            if (ModelState.IsValid)
-            {
-
-                //Luu vao CSDL  
-
-                UpdateModel(khachhang);
-                data.SubmitChanges();
-
-            }
-            return RedirectToAction("KhachHang");
-
-        }
         
-        [HttpGet]
         public ActionResult SuaRau(int id)
         {
-            SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
-            if (sp == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            return View();
-        }
-
-        public ActionResult SuaRau(SANPHAM sp, HttpPostedFileBase fileupload)
-        {
             ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
-
+            ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
+            var rau = data.SANPHAMs.First(k => k.MASP == id);
+            return View(rau);
+        }
+        [HttpPost]
+        public ActionResult SuaRau(int id, FormCollection collection, HttpPostedFileBase fileupload)
+        {
+            var sp = data.SANPHAMs.First(k => k.MASP == id);
+            ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
             ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
             if (fileupload == null)
             {
@@ -230,13 +195,30 @@ namespace WebBanRauProject.Controllers
                         fileupload.SaveAs(path);//Luu file vao duong dan
 
                     sp.ANHSP = fileName;
-
-                    UpdateModel(sp);
-                    data.SubmitChanges();
                 }
-                return RedirectToAction("Rau");
             }
-            return View();
+
+            
+            string tenRau = collection["TENSP"];
+            decimal giaBan = decimal.Parse(collection["GIABAN"]);
+            string moTa = collection["MOTA"];
+            DateTime ngayNhap = DateTime.Parse(collection["NGAYCAPNHAT"]);
+            double soLuongTon = double.Parse(collection["SOLUONGTON"]);
+            int maLoai = int.Parse(collection["MALOAI"]);
+            int maNCC = int.Parse(collection["MANCC"]);
+
+            sp.TENSP = tenRau;
+            sp.GIABAN = giaBan;
+            sp.MOTA = moTa;
+            sp.NGAYCAPNHAT = ngayNhap;
+            sp.SOLUONGTON = soLuongTon;
+            sp.MALOAI = maLoai;
+            sp.MANCC = maNCC;
+
+            UpdateModel(sp);
+            data.SubmitChanges();
+
+            return RedirectToAction("Chitietrau",new { id = id});
         }
     }
 
