@@ -1,0 +1,43 @@
+﻿@model WebBanRauProject.Models.QuanLyGoiYMonAn
+
+@{
+    ViewBag.Title = "ChitietMonAn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT MÓN ĂN</h2>
+
+<div>
+    <h4>QuanLyGoiYMonAn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            TÊN MÓN ĂN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMONAN)
+        </dd>
+
+        <dt>
+            MÔ TẢ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            HÌNH ẢNH
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaMonAn", new { id = Model.MASO }) |
+    @Html.ActionLink("TRỞ VỀ", "MonAn")
+</p>
