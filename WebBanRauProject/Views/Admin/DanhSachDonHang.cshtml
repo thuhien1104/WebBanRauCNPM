@@ -11,16 +11,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DATHANHTOAN)
+            Thanh toán
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TINHTRANGGIAOHANG)
+            Tình trạng giao hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NGAYDAT)
+            Ngày đặt
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NGAYGIAO)
+            Ngày giao
         </th>
         <th>
             Tên khách hàng
@@ -41,7 +41,14 @@
             }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TINHTRANGGIAOHANG)
+            @if (item.TINHTRANGGIAOHANG == true)
+            {
+                @ViewBag.DaGiaoHang
+            }
+            else
+            {
+                @ViewBag.ChuaGiaoHang
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NGAYDAT)
@@ -54,7 +61,7 @@
         </td>
         <td>
             @Html.ActionLink("Cập nhập", "SuaDonHang", new { id=item.MADH }) |
-            @Html.ActionLink("Xem", "XemDonHang", new { id=item.MADH }) 
+            @Html.ActionLink("Xem", "XemDonDatHang", new { id=item.MADH }) 
         </td>
     </tr>
 }
