@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebBanRauProject.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "DanhSachDonHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh Sách Đơn Hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DATHANHTOAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TINHTRANGGIAOHANG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYDAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYGIAO)
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if(item.DATHANHTOAN == true)
+            {
+                @ViewBag.DaThanhToan
+            }
+            else
+            {
+                @ViewBag.ChuaThanhToan
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TINHTRANGGIAOHANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYDAT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYGIAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhập", "SuaDonHang", new { id=item.MADH }) |
+            @Html.ActionLink("Xem", "XemDonHang", new { id=item.MADH }) 
+        </td>
+    </tr>
+}
+
+</table>
