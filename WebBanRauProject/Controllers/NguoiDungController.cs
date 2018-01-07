@@ -149,6 +149,20 @@ namespace WebBanRauProject.Controllers
             data.SubmitChanges();
             return RedirectToAction("ThongTinKhachHang");
         }
+
+       
+        public ActionResult TimKiem(string searchTerm)
+        {
+            var sp = from b in data.SANPHAMs select b;
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                sp = data.SANPHAMs.Where(b => b.TENSP.Contains(searchTerm));
+            }
+            ViewBag.SearchTerm = searchTerm;
+            return View(sp.ToList());
+        }
+       
     }
     
 }

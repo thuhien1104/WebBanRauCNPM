@@ -1,11 +1,12 @@
-﻿
+﻿@model IEnumerable<WebBanRauProject.Models.SANPHAM>
+
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "TimKiem";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
 <div class="container">
-    <span style="text-align: center;color: white;margin-bottom:20px; background-color: red;"> Sản phẩm mới về</span>
+    <span style="text-align: center;color: black;padding-bottom:15px;word-spacing:2px">Danh tìm kiếm</span>
     <div class="row articles">
         @foreach (var sanpham in Model)
         {
@@ -13,7 +14,7 @@
 
 
             <div class="col-md-3 col-sm-6">
-                <a href="@Url.Action("Details", "RauShop", new { id = sanpham.MASP })">
+                <a href="@Url.Action("ShowAll", "RauShop", new { id = sanpham.MASP })">
                     <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
                 </a>
                 <div class="text">
@@ -32,5 +33,4 @@
         }
     </div>
 </div>
-
 
