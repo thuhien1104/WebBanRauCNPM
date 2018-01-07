@@ -14,9 +14,12 @@ namespace WebBanRauProject.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            if (ad == null)
+                return RedirectToAction("Login");
             return View();
         }
-
+        
         public ActionResult Rau()
         {
             return View(data.SANPHAMs.ToList());
@@ -111,6 +114,37 @@ namespace WebBanRauProject.Controllers
                 return null;
             }
             return View(sp);
+        } 
+
+        public ActionResult XoaRau(int id)
+        {
+            //lấy đối tượng :
+            SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
+            ViewBag.MaSP = sp.MASP;
+            if(sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+
+        [HttpPost,ActionName("XoaRau")]
+        public ActionResult XacNhanXoaRau(int id)
+        {
+            //lấy ra đối tượng cần xóa theo mã:
+            SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
+            ViewBag.MaSP = sp.MASP;
+            if(sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.SANPHAMs.DeleteOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("Rau");
+
+
         }
 
         public ActionResult ChitietKhachHang(int makh)
@@ -227,6 +261,8 @@ namespace WebBanRauProject.Controllers
         {
             ViewBag.DaThanhToan = "Đã thanh toán";
             ViewBag.ChuaThanhToan = "Chưa thanh toán";
+            ViewBag.DaGiaoHang = "Đã giao hàng";
+            ViewBag.ChuaGiaoHang = "Chưa giao hàng";
             List<DONDATHANG> lstDonHang = data.DONDATHANGs.ToList();
             return View(lstDonHang);
         }
@@ -234,6 +270,41 @@ namespace WebBanRauProject.Controllers
         {
             var donhang = data.DONDATHANGs.First(d => d.MADH == id);
             return View(donhang);
+        }
+
+        public ActionResult ChiTietDonHang(int id)
+        {
+            var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
+            return View(chitiet);
+        }
+        [HttpPost]
+        public ActionResult ChiTietDonHang(int id,FormCollection collection)
+        {
+            var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
+            bool flag = true;
+            foreach (var item in chitiet)
+            {
+                var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
+                sp.SOLUONGTON -= item.SOLUONG;
+                if(sp.SOLUONGTON < 0)
+                {
+                    ViewBag.ThongBao = "Hàng trong kho đã hết!!!Xin kiểm tra lại!!!";
+                    flag = false;
+                }
+            }
+            if(flag == true)
+            {
+                foreach (var item in chitiet)
+                {
+                    var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
+                    sp.SOLUONGTON -= item.SOLUONG;
+                    UpdateModel(sp);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("DanhSachDonHang");
+            }
+            return View(chitiet);  
+            
         }
         [HttpGet]
         public ActionResult SuaDonHang(int id)
@@ -254,6 +325,128 @@ namespace WebBanRauProject.Controllers
 
             return RedirectToAction("DanhSachDonHang");
         }
+        
+
+
+        public ActionResult MonAn()
+        {
+            return View(data.QuanLyGoiYMonAns.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult ThemmoiMonAn()
+        {
+            
+
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult ThemmoiMonAn(QuanLyGoiYMonAn mon, HttpPostedFileBase fileupload)
+        {
+
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    mon.HINHANH = fileName;
+
+                    data.QuanLyGoiYMonAns.InsertOnSubmit(mon);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("MonAn");
+            }
+            return View();
+        }
+
+        public ActionResult XoaMonAn(int id)
+        {
+            //lấy đối tượng :
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+
+        [HttpPost, ActionName("XoaMonAn")]
+        public ActionResult XacNhanXoaMonAn(int id)
+        {
+            //lấy ra đối tượng cần xóa theo mã:
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.QuanLyGoiYMonAns.DeleteOnSubmit(mon);
+            data.SubmitChanges();
+            return RedirectToAction("MonAn");
+        }
+
+        public ActionResult ChitietMonAn(int id)
+        {
+            //lay doi tuong
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+
+
+        public ActionResult SuaMonAn(int id)
+        {
+            //lay doi tuong
+            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
+            ViewBag.MaSO = mon.MASO;
+            if (mon == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(mon);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaMonAn(QuanLyGoiYMonAn mon)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                //Luu vao CSDL  
+
+                UpdateModel(mon);
+                data.SubmitChanges();
+
+            }
+            return RedirectToAction("MonAn");
+
+        }
+
     }
 
 }
