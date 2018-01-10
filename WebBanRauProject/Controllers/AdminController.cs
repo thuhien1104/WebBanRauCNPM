@@ -266,6 +266,8 @@ namespace WebBanRauProject.Controllers
         {
             ViewBag.DaThanhToan = "Đã thanh toán";
             ViewBag.ChuaThanhToan = "Chưa thanh toán";
+            ViewBag.DaGiaoHang = "Đã giao hàng";
+            ViewBag.ChuaGiaoHang = "Chưa giao hàng";
             List<DONDATHANG> lstDonHang = data.DONDATHANGs.ToList();
             return View(lstDonHang);
         }
@@ -273,6 +275,41 @@ namespace WebBanRauProject.Controllers
         {
             var donhang = data.DONDATHANGs.First(d => d.MADH == id);
             return View(donhang);
+        }
+
+        public ActionResult ChiTietDonHang(int id)
+        {
+            var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
+            return View(chitiet);
+        }
+        [HttpPost]
+        public ActionResult ChiTietDonHang(int id,FormCollection collection)
+        {
+            var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
+            bool flag = true;
+            foreach (var item in chitiet)
+            {
+                var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
+                sp.SOLUONGTON -= item.SOLUONG;
+                if(sp.SOLUONGTON < 0)
+                {
+                    ViewBag.ThongBao = "Hàng trong kho đã hết!!!Xin kiểm tra lại!!!";
+                    flag = false;
+                }
+            }
+            if(flag == true)
+            {
+                foreach (var item in chitiet)
+                {
+                    var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
+                    sp.SOLUONGTON -= item.SOLUONG;
+                    UpdateModel(sp);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("DanhSachDonHang");
+            }
+            return View(chitiet);  
+            
         }
         [HttpGet]
         public ActionResult SuaDonHang(int id)
@@ -293,6 +330,8 @@ namespace WebBanRauProject.Controllers
 
             return RedirectToAction("DanhSachDonHang");
         }
+        
+
 
         public ActionResult MonAn()
         {

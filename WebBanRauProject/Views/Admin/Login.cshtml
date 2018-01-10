@@ -13,15 +13,16 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css/reset.css">
     <link rel="stylesheet" type="text/css" href="~/Content/css/structure.css">
 </head>
-
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
 <body>
     <h4 style="color:red; text-align:center">@ViewBag.Thongbao</h4>
 
-    @using (Html.BeginForm())
-            {
+    
         <form class="box login">
 
-            @Html.ValidationSummary(true)
+            
             <fieldset class="boxBody">
 
 
@@ -40,10 +41,11 @@
             </footer>
 
         </form>
-    }
+
     <footer id="main">
         <a href="http://wwww.cssjunction.com">Simple Login Form (HTML5/CSS3 Coded) by CSS Junction</a> | <a href="http://www.premiumpixels.com">PSD by Premium Pixels</a>
     </footer>
 
 </body>
+}
 </html>

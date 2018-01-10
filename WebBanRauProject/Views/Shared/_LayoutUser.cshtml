@@ -80,14 +80,35 @@
                         <li><a href="@Url.Action("GioHang","GioHang")">Giỏ hàng</a></li>
                         <li><a href="">Thanh toán</a></li>
                         <li><a href="@Url.Action("ThongTin", "RauShop")">Thông tin cửa hàng</a></li>
-
                         <li><a href="@Url.Action("LienHe", "RauShop")">Liên hệ</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
+
+            <div class="containers">
+                <a style="width:300px; position:absolute;top:50%;margin-right:17px;margin-top:17px;z-index:1">
+
+                    @using (Html.BeginForm("TimKiem", "NguoiDung", FormMethod.Get, new { @class = "navbar-form navbar-right", role = "search", id = "search-form" }))
+                    {
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm" name="SearchTerm" value="@ViewBag.SearchTerm" id="search-box">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default hidden-xs"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    }
+                </a>
+
+            </div>
+
+
             <div class="page-title">
             <div class="container">
+
+
+
+
                 <div class="row">
                     <div class="col-md-10 produti">
                     </div>
