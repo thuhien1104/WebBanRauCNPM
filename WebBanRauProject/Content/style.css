@@ -4,6 +4,7 @@ ul {
   padding:0;
   margin:0;
 }
+
 ul li {
   list-style:none;
 }
@@ -358,7 +359,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   border:0;
   font-size:100%;
   font:inherit;
-  vertical-align: baseline;
+
 }
 /* HTML5 display-role reset for older browsers */
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
@@ -2086,12 +2087,12 @@ ul.pagination-list li a.active,ul.pagination-list li a:hover {
 .checkout-cart table.cart-table th {
   background:#a39b99;
 }
-.table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td {
+.table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr,.table>tbody>tr>td,.table>tfoot>tr>td {
   padding:8px;
   line-height:1.42857143;
   vertical-align:center;
 }
-.table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td {
+.table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>t,.table>tbody>tr>td,.table>tfoot>tr>td {
   border-top:none;
 }
 .panel-body {
@@ -2122,18 +2123,18 @@ table.cart-table tr {
 table.cart-table th {
   border:none;
   background-color:#f6f6f6;
-  text-align:left;
-  padding:10px 20px;
+
+
   color:#fff;
   vertical-align:top;
   font-size:11px;
   font-weight:600;
   background:green;
   text-transform:uppercase;
-  padding:20px 20px;
+  
 }
 table.cart-table td {
-  padding:20px;
+ 
   border-bottom:#eee 1px solid;
   border-top:none;
   border-right:none;
@@ -2142,6 +2143,7 @@ table.cart-table td {
   font-weight:bold;
   color:#2a2523;
 }
+
 table .cart-title a {
   font-weight:bold;
   font-size:13px;
@@ -2507,3 +2509,5 @@ table.table.cart-table.responsive-table img {
     width: 100px;
     height: 100px;
 }
+
+ 

@@ -2,9 +2,11 @@
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-47T10HP\SQLEXPRESS;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Admin" Member="Admins">
     <Type Name="Admin">
-      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="PasswordAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Hoten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hinhanh" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.SANPHAM" Member="SANPHAMs">
@@ -20,7 +22,7 @@
       <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="SANPHAM_CHITIETDONHANG" Member="CHITIETDONHANGs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETDONHANG" />
       <Association Name="LOAIRAU_SANPHAM" Member="LOAIRAU" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAIRAU" IsForeignKey="true" />
-      <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
+      <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETDONHANG" Member="CHITIETDONHANGs">
@@ -67,8 +69,8 @@
   <Table Name="dbo.NHACUNGCAP" Member="NHACUNGCAPs">
     <Type Name="NHACUNGCAP">
       <Column Name="MANCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TENCC" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TENCC" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="NHACUNGCAP_SANPHAM" Member="SANPHAMs" ThisKey="MANCC" OtherKey="MANCC" Type="SANPHAM" />

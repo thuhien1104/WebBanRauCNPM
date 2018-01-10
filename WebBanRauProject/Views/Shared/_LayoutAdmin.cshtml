@@ -30,14 +30,7 @@
                     <ul>
                         <li><a href="#">Eng</a></li>
                         <li><a href="#">Usd</a></li>
-                        <li>
-                            <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
-                                <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Thêm admin mới","ThemAdmin","Admin")</li>
                     </ul>
                 </div>
             </div>
@@ -59,9 +52,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Trang chủ", "Index", "Admin")</li>
-                        <li>@Html.ActionLink("Quản lý sản phẩm", "SanPham", "Admin")</li>
+                        <li>@Html.ActionLink("Quản lý sản phẩm", "Rau", "Admin")</li>
                         <li>@Html.ActionLink("Các nhà cung cấp", "NhaCungCap", "Admin")</li>
-                        <li>@Html.ActionLink("Các đơn hàng","","Admin")</li>
+                        <li>@Html.ActionLink("Các đơn hàng","DanhSachDonHang","Admin")</li>
                         <li>@Html.ActionLink("Món ăn","MonAn","Admin")</li>
                     </ul>
                 </div>

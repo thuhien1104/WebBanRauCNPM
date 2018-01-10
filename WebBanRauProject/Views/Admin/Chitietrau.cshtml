@@ -4,79 +4,126 @@
     ViewBag.Title = "Chi tiết";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left:400px;
+    }
 
-<h2>Thông tin chi tiết Rau</h2>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên sản phẩm: 
-        </dt>
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.TENSP)
-        </dd>
+        #table tr:hover {
+            background-color: #ddd;
+        }
 
-        <dt>
-            Giá bán(/kg):
-        </dt>
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+            
+        }
+</style>
+<h2 style="color: brown ; font-size:20px">THÔNG TIN CHI TIẾT RAU</h2>
+    <table id="table">
+        <tr>
+            <th>
+                Tên sản phẩm:
+            </th>
 
-        <dd>
-            @String.Format("{0:0,0}",Model.GIABAN) VNĐ
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.TENSP)
+            </td>
+        </tr>
 
-        <dt>
-            Mô tả: 
-        </dt>
+         <tr>
+             <th>
+                 Giá bán(/kg):
+             </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.MOTA)
-        </dd>
+             <td>
+                 @String.Format("{0:0,0}", Model.GIABAN) VNĐ
+             </td>
+         </tr>
 
-        <dt>
-            Ảnh sản phẩm: 
-        </dt>
+         <tr>
+             <th>
+                 Mô tả:
+             </th>
 
-        <dd>
-            <img src="@Url.Content("~/images/"+Model.ANHSP)" width="120px"/>
-        </dd>
+             <td>
+                 @Html.DisplayFor(model => model.MOTA)
+             </td>
 
-        <dt>
-            Ngày nhập hàng:
-        </dt>
+         </tr>    
+            
+        <tr>
+            <th>
+                Ảnh sản phẩm:
+            </th>
 
-        <dd>
-            @String.Format("{0:đ/MM/yyyy}",Model.NGAYCAPNHAT)
-        </dd>
+            <td>
+                <img src="@Url.Content("~/images/"+Model.ANHSP)" width="120px" />
+            </td>
+        </tr>
+           
+        <tr>
+            <th>
+                Ngày nhập hàng:
+            </th>
 
-        <dt>
-            Số lượng tồn:
-        </dt>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", Model.NGAYCAPNHAT)
+            </td>
+        </tr>
+            
+        <tr>
+            <th>
+                Số lượng tồn:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.SOLUONGTON)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.SOLUONGTON)
+            </td>
+            </tr>
+        <tr>
+            <th>
+                Tên loại:
+            </th>
 
-        <dt>
-            Tên loại:
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.LOAIRAU.TENLOAI)
+            </td>
+        </tr>
+            
+        <tr>
+            <th>
+                Tên nhà cung cấp:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.LOAIRAU.TENLOAI)
-        </dd>
-
-        <dt>
-            Tên nhà cung cấp:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NHACUNGCAP.TENCC)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Sửa", "SuaSP", new { id = Model.MASP }) |
-    @Html.ActionLink("Trở về", "Rau")
+            <td>
+                @Html.DisplayFor(model => model.NHACUNGCAP.TENCC)
+            </td>
+        </tr>
+            
+    </table>
+<p style="text-align:center">
+    <button>
+@Html.ActionLink("SỬA", "SuaRau", new { id = Model.MASP })
+    </button>
+    <button>
+        @Html.ActionLink("TRỞ VỀ", "Rau")
+    </button>
+   
 </p>

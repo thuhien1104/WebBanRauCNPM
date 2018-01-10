@@ -1,5 +1,9 @@
-﻿
+﻿@model WebBanRauProject.Models.Admin
+
 @{
     ViewBag.Title = "Home";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+<h1>XIN CHÀO @Model.Hoten</h1>
+<img src="@Url.Content("~/images/"+Model.Hinhanh)" width="300px" height="400px">

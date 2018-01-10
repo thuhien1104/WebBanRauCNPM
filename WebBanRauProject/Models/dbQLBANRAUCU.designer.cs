@@ -157,22 +157,30 @@ namespace WebBanRauProject.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _ID;
+		
 		private string _UserAdmin;
 		
 		private string _PasswordAdmin;
 		
 		private string _Hoten;
 		
+		private string _Hinhanh;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
     partial void OnUserAdminChanging(string value);
     partial void OnUserAdminChanged();
     partial void OnPasswordAdminChanging(string value);
     partial void OnPasswordAdminChanged();
     partial void OnHotenChanging(string value);
     partial void OnHotenChanged();
+    partial void OnHinhanhChanging(string value);
+    partial void OnHinhanhChanged();
     #endregion
 		
 		public Admin()
@@ -180,7 +188,27 @@ namespace WebBanRauProject.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAdmin", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAdmin", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string UserAdmin
 		{
 			get
@@ -236,6 +264,26 @@ namespace WebBanRauProject.Models
 					this._Hoten = value;
 					this.SendPropertyChanged("Hoten");
 					this.OnHotenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hinhanh", DbType="VarChar(30)")]
+		public string Hinhanh
+		{
+			get
+			{
+				return this._Hinhanh;
+			}
+			set
+			{
+				if ((this._Hinhanh != value))
+				{
+					this.OnHinhanhChanging(value);
+					this.SendPropertyChanging();
+					this._Hinhanh = value;
+					this.SendPropertyChanged("Hinhanh");
+					this.OnHinhanhChanged();
 				}
 			}
 		}
@@ -558,7 +606,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true, DeleteRule="CASCADE")]
 		public NHACUNGCAP NHACUNGCAP
 		{
 			get
@@ -1500,7 +1548,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string TENCC
 		{
 			get
@@ -1520,7 +1568,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(MAX)")]
 		public string DIACHI
 		{
 			get

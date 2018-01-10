@@ -231,6 +231,45 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bap_cai.jpg" />
+    <Content Include="images\bau.jpg" />
+    <Content Include="images\bi.jpg" />
+    <Content Include="images\bi_nhoi_thit.jpg" />
+    <Content Include="images\cai_nhung.jpg" />
+    <Content Include="images\cai_thao.jpg" />
+    <Content Include="images\ca_chua.jpg" />
+    <Content Include="images\ca_rot.jpg" />
+    <Content Include="images\ca_tim.png" />
+    <Content Include="images\cu_cai_trang.gif" />
+    <Content Include="images\dua_leo.jpg" />
+    <Content Include="images\khoai_lang.jpg" />
+    <Content Include="images\khoai_mo.jpg" />
+    <Content Include="images\khoai_mon_cao.jpg" />
+    <Content Include="images\khoai_mon_so.jpg" />
+    <Content Include="images\khoai_tay.jpg" />
+    <Content Include="images\khoai_tu.jpg" />
+    <Content Include="images\muop.jpg" />
+    <Content Include="images\nam_bao_ngu.jpg" />
+    <Content Include="images\nam_dong_co.png" />
+    <Content Include="images\nam_dui_ga.jpg" />
+    <Content Include="images\nam_kim_cham.jpg" />
+    <Content Include="images\nam_linh_chi.jpg" />
+    <Content Include="images\nam_meo.jpg" />
+    <Content Include="images\nam_rom.jpg" />
+    <Content Include="images\nam_tuyet.jpg" />
+    <Content Include="images\rau_cai_ngong.jpg" />
+    <Content Include="images\rau_cai_ngot.jpg" />
+    <Content Include="images\rau_cai_thia.jpg" />
+    <Content Include="images\rau_cải_xanh.jpg" />
+    <Content Include="images\rau_den.jpg" />
+    <Content Include="images\rau_ma.jpg" />
+    <Content Include="images\rau_mam.jpg" />
+    <Content Include="images\rau_mung_toi.jpg" />
+    <Content Include="images\rau_muong.jpg" />
+    <Content Include="images\rau_ngot.jpg" />
+    <Content Include="images\rau_song.jpg" />
+    <Content Include="images\rau_xa_lach.jpg" />
+    <Content Include="images\son.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -340,13 +379,15 @@
     <Content Include="Views\Admin\XoaMonAn.cshtml" />
     <Content Include="Views\Admin\ChitietMonAn.cshtml" />
     <Content Include="Views\Admin\SuaMonAn.cshtml" />
+    <Content Include="Views\Shared\_PartialAdmin.cshtml" />
+    <Content Include="Views\Admin\ThemAdmin.cshtml" />
+    <Content Include="Views\Admin\XoaAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="fonts\webfonts\" />
-    <Folder Include="images\" />
     <Folder Include="Scripts\images\" />
   </ItemGroup>
   <ItemGroup>

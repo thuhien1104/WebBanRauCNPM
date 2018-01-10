@@ -5,29 +5,60 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Quản lý sản phẩm</h2>
+<h2 style="color: brown ; font-size:20px">Quản lý sản phẩm</h2>
 
-<p style="font-size:20px; color:cornflowerblue">
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
-<table class="table">
-    <thead>
+<button style="margin-top:10px">
+    <p style="font-size:25px; color:cornflowerblue">
+        @Html.ActionLink("Thêm mới", "ThemmoiRau")
+    </p>
+</button>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #20620d;
+            color: white;
+        }
+</style>
+<table id="table">
+    <thead  style="font-weight: bold">
     <tr>
-        <th style="width:200px">Tên sản phẩm
+        <th style="text-align:center;width:10%">Tên sản phẩm
         </th>
-        <th style="width:200px">Giá bán/kg</th>
-        <th style="width:200px">Mô tả</th>
-        <th style="width:200px">Ảnh</th>       
-         <th style="width:200px">Ngày nhập</th>    
-            <th style="width:200px"> Số lượng tồn</th>        
-        <th style="width:200px">Loại rau</th>
-        <th style="width:200px">Tên nhà cung cấp</th>
-        <th>Chứ năng</th>
+        <th style="text-align:center;width:10%">Giá bán/kg</th>
+        <th style="text-align:center;width:20%">Mô tả</th>
+        <th style="text-align:center;width:15%">Ảnh</th>       
+         <th style="text-align:center;width:8%">Ngày nhập</th>    
+            <th style="text-align:center;width:5%"> Số lượng tồn</th>        
+        <th style="text-align:center;width:5%">Loại rau</th>
+        <th style="text-align:center;width:12%">Tên nhà cung cấp</th>
+        <th style="text-align:center;width:20%">Chứ năng</th>
     </tr>
     </thead>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="text-align:center">
         <td>
             @Html.DisplayFor(modelItem => item.TENSP)
         </td>
@@ -38,7 +69,7 @@
             @Html.DisplayFor(modelItem => item.MOTA)
         </td>
         <td>
-            <img src="@Url.Content("~/images/"+item.ANHSP)" width="150px" height="150px">
+            <img src="@Url.Content("~/images/"+item.ANHSP)" width="120px" height="100px">
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NGAYCAPNHAT)

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>CHI TIẾT MÓN ĂN</h2>
+<h2 style="color: brown ; font-size:20px">CHI TIẾT MÓN ĂN</h2>
 
 <div>
     <h4>QuanLyGoiYMonAn</h4>
@@ -32,12 +32,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HINHANH)
+            <img src="@Url.Content("~/images/"+Model.HINHANH)" width="120px" />
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Sửa", "SuaMonAn", new { id = Model.MASO }) |
+    @Html.ActionLink("SỬA", "SuaMonAn", new { id = Model.MASO }) |
     @Html.ActionLink("TRỞ VỀ", "MonAn")
 </p>
