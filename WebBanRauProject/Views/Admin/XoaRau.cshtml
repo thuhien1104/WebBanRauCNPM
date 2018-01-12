@@ -5,86 +5,134 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>XoaRau</h2>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left:400px;
+    }
 
-<h3>Bạn quyết định xóa loại rau này?</h3>
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên sản phẩm:
-        </dt>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.TENSP)
-        </dd>
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        <dt>
-            Giá bán:
-        </dt>
+        #table tr:hover {
+            background-color: #ddd;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.GIABAN)
-        </dd>
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+            
+        }
+</style>
 
-        <dt>
-            Mô tả:
-        </dt>
+<h2 style="color: brown ; font-size:20px; text-align:center">XÓA RAU</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.MOTA)
-        </dd>
 
-        <dt>
-            Ảnh sản phẩm:
-        </dt>
+    <table id="table">
+        <tr>
+            <th>
+                Tên sản phẩm:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.ANHSP)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.TENSP)
+            </td>
+        </tr>
+        
+        <tr>
+            <th>
+                Giá bán:
+            </th>
 
-        <dt>
-            Ngày cập nhật:
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.GIABAN)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Mô tả:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.NGAYCAPNHAT)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.MOTA)
+            </td>
+        </tr>
 
-        <dt>
-            Số lượng tồn:
-        </dt>
+        <tr>
+            <th>
+                Ảnh sản phẩm:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.SOLUONGTON)
-        </dd>
+            <td>
+                <img src="@Url.Content("~/images/"+Model.ANHSP)" width="120px" />
+            </td>
+        </tr>
 
-        <dt>
-            Mã loại:
-        </dt>
+        <tr>
+            <th>
+                Ngày cập nhật:
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.MALOAI)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.NGAYCAPNHAT)
+            </td>
+        </tr>
 
-        <dt>
-            Mã nhà cung cấp:
-        </dt>
+       <tr>
+           <th>
+               Số lượng tồn:
+           </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.MANCC)
-        </dd>
+           <td>
+               @Html.DisplayFor(model => model.SOLUONGTON)
+           </td>
+       </tr>
 
-    </dl>
+        <tr>
+            <th>
+                Mã loại:
+            </th>
 
+            <td>
+                @Html.DisplayFor(model => model.MALOAI)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Mã nhà cung cấp:
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.MANCC)
+            </td>
+        </tr>
+
+        
+</table>
+   
+<h3 style="color: black ; font-size:20px ;text-align:center"  >Bạn quyết định xóa loại rau này?</h3>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-default" /> 
-            @Html.ActionLink("Trở về","Rau","Admin");
+        <div class="form-actions no-color" align="center">
+            <input type="submit" value="XÓA" class="btn btn-default" /> 
+            <button class="btn btn-default">
+                @Html.ActionLink("TRỞ VỀ", "Rau", "Admin")
+            </button>
         </div>
     }
-</div>
+

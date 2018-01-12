@@ -221,6 +221,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\table-design.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\product-slider.css" />
@@ -365,8 +366,6 @@
     <Content Include="Views\RauShop\ThongTin.cshtml" />
     <Content Include="Views\Admin\KhachHang.cshtml" />
     <Content Include="Views\Admin\ChitietKhachHang.cshtml" />
-    <Content Include="Views\Admin\DeleteKhachHang.cshtml" />
-    <Content Include="Views\Admin\SuaKH.cshtml" />
     <Content Include="Views\Admin\SuaRau.cshtml" />
     <Content Include="Views\NguoiDung\ThongTinKhachHang.cshtml" />
     <Content Include="Views\NguoiDung\SuaThongTinKH.cshtml" />
@@ -387,7 +386,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="fonts\webfonts\" />
     <Folder Include="Scripts\images\" />

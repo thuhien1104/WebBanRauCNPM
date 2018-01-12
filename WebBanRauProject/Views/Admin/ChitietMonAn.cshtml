@@ -5,39 +5,78 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2 style="color: brown ; font-size:20px">CHI TIẾT MÓN ĂN</h2>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: 400px;
+    }
 
-<div>
-    <h4>QuanLyGoiYMonAn</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+        }
+</style>
+
+
+
+<h2 style="color: brown ; font-size:20px; text-align:center">CHI TIẾT MÓN ĂN</h2>
+
+<table id="table">
+
+    <tr>
+        <th>
             TÊN MÓN ĂN
-        </dt>
-
-        <dd>
+        </th>
+        <td>
             @Html.DisplayFor(model => model.TENMONAN)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    <tr>
+        <th>
             MÔ TẢ
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.MOTA)
-        </dd>
+        </td>
+    </tr>
+    <tr>
 
-        <dt>
+        <th>
             HÌNH ẢNH
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             <img src="@Url.Content("~/images/"+Model.HINHANH)" width="120px" />
-        </dd>
+        </td>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("SỬA", "SuaMonAn", new { id = Model.MASO }) |
-    @Html.ActionLink("TRỞ VỀ", "MonAn")
+    </tr>
+</table>
+<p style="text-align:center; margin-top:10px">
+
+    <button>
+        @Html.ActionLink("SỬA", "SuaMonAn", new { id = Model.MASO })
+    </button>
+    <button>
+        @Html.ActionLink("TRỞ VỀ", "MonAn")
+    </button>
 </p>
