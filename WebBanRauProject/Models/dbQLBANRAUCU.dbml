@@ -1,26 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLBANRAUCU" Class="dbQLBANRAUCUDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.SANPHAM" Member="SANPHAMs">
-    <Type Name="SANPHAM">
-      <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="GIABAN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ANHSP" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="NGAYCAPNHAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SOLUONGTON" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="SANPHAM_CHITIETDONHANG" Member="CHITIETDONHANGs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETDONHANG" />
-      <Association Name="LOAIRAU_SANPHAM" Member="LOAIRAU" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAIRAU" IsForeignKey="true" />
-      <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DEATH\SQLEXPRESS;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Admin" Member="Admins">
     <Type Name="Admin">
-      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="PasswordAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Hoten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hinhanh" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TEMP" Member="TEMPs">
+    <Type Name="TEMP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETDONHANG" Member="CHITIETDONHANGs">
@@ -29,8 +23,8 @@
       <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SOLUONG" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="DONGIA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Association Name="SANPHAM_CHITIETDONHANG" Member="SANPHAM" ThisKey="MASP" OtherKey="MASP" Type="SANPHAM" IsForeignKey="true" />
       <Association Name="DONDATHANG_CHITIETDONHANG" Member="DONDATHANG" ThisKey="MADH" OtherKey="MADH" Type="DONDATHANG" IsForeignKey="true" />
+      <Association Name="SANPHAM_CHITIETDONHANG" Member="SANPHAM" ThisKey="MASP" OtherKey="MASP" Type="SANPHAM" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DONDATHANG" Member="DONDATHANGs">
@@ -76,10 +70,26 @@
   </Table>
   <Table Name="dbo.QuanLyGoiYMonAn" Member="QuanLyGoiYMonAns">
     <Type Name="QuanLyGoiYMonAn">
-      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENMONAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HINHANH" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SANPHAM" Member="SANPHAMs">
+    <Type Name="SANPHAM">
+      <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="GIABAN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ANHSP" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NGAYCAPNHAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SOLUONGTON" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SANPHAM_CHITIETDONHANG" Member="CHITIETDONHANGs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETDONHANG" />
+      <Association Name="LOAIRAU_SANPHAM" Member="LOAIRAU" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAIRAU" IsForeignKey="true" />
+      <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

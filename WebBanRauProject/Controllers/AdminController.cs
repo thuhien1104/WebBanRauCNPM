@@ -19,11 +19,8 @@ namespace WebBanRauProject.Controllers
                 return RedirectToAction("Login");
             return View();
         }
-        
-        public ActionResult Rau()
-        {
-            return View(data.SANPHAMs.ToList());
-        }
+
+
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
@@ -58,7 +55,18 @@ namespace WebBanRauProject.Controllers
             }
             return View();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// ///
+        public ActionResult Rau()
+        {
+            var query = from sp in data.SANPHAMs
+                        where !(from t in data.TEMPs select t.MASP).Contains(sp.MASP)
+                        select sp;
+            return View(query);
+        }
         [HttpGet]
         public ActionResult ThemmoiRau()
         {
@@ -114,14 +122,14 @@ namespace WebBanRauProject.Controllers
                 return null;
             }
             return View(sp);
-        } 
+        }
 
         public ActionResult XoaRau(int id)
         {
             //lấy đối tượng :
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
             ViewBag.MaSP = sp.MASP;
-            if(sp == null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -129,24 +137,27 @@ namespace WebBanRauProject.Controllers
             return View(sp);
         }
 
-        [HttpPost,ActionName("XoaRau")]
-        public ActionResult XacNhanXoaRau(int id)
+        [HttpPost, ActionName("XoaRau")]
+        public ActionResult XacNhanXoaRau(int id, TEMP temp)
         {
             //lấy ra đối tượng cần xóa theo mã:
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
             ViewBag.MaSP = sp.MASP;
-            if(sp == null)
+            temp.MASP = sp.MASP;
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            data.SANPHAMs.DeleteOnSubmit(sp);
+            data.TEMPs.InsertOnSubmit(temp);
             data.SubmitChanges();
             return RedirectToAction("Rau");
-
-
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="makh"></param>
+        /// <returns></returns>
         public ActionResult ChitietKhachHang(int makh)
         {
             //lay doi tuong
@@ -176,7 +187,6 @@ namespace WebBanRauProject.Controllers
         }
 
         [HttpPost, ActionName("DeleteKhachHang")]
-
         public ActionResult DeleteKH(int makh)
         {
             //lay doi tuong
@@ -196,7 +206,7 @@ namespace WebBanRauProject.Controllers
         {
             return null;
         }
-        
+
         public ActionResult SuaRau(int id)
         {
             ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
@@ -232,7 +242,7 @@ namespace WebBanRauProject.Controllers
                 }
             }
 
-            
+
             string tenRau = collection["TENSP"];
             decimal giaBan = decimal.Parse(collection["GIABAN"]);
             string moTa = collection["MOTA"];
@@ -252,10 +262,12 @@ namespace WebBanRauProject.Controllers
             UpdateModel(sp);
             data.SubmitChanges();
 
-            return RedirectToAction("Chitietrau",new { id = id});
+            return RedirectToAction("Chitietrau", new { id = id });
         }
-
-        //Admin co the xem sua don dat hang
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
 
         public ActionResult DanhSachDonHang()
         {
@@ -266,11 +278,6 @@ namespace WebBanRauProject.Controllers
             List<DONDATHANG> lstDonHang = data.DONDATHANGs.ToList();
             return View(lstDonHang);
         }
-        public ActionResult XemDonDatHang(int id)
-        {
-            var donhang = data.DONDATHANGs.First(d => d.MADH == id);
-            return View(donhang);
-        }
 
         public ActionResult ChiTietDonHang(int id)
         {
@@ -278,7 +285,7 @@ namespace WebBanRauProject.Controllers
             return View(chitiet);
         }
         [HttpPost]
-        public ActionResult ChiTietDonHang(int id,FormCollection collection)
+        public ActionResult ChiTietDonHang(int id, FormCollection collection)
         {
             var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
             bool flag = true;
@@ -286,13 +293,13 @@ namespace WebBanRauProject.Controllers
             {
                 var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
                 sp.SOLUONGTON -= item.SOLUONG;
-                if(sp.SOLUONGTON < 0)
+                if (sp.SOLUONGTON < 0)
                 {
                     ViewBag.ThongBao = "Hàng trong kho đã hết!!!Xin kiểm tra lại!!!";
                     flag = false;
                 }
             }
-            if(flag == true)
+            if (flag == true)
             {
                 foreach (var item in chitiet)
                 {
@@ -303,8 +310,8 @@ namespace WebBanRauProject.Controllers
                 }
                 return RedirectToAction("DanhSachDonHang");
             }
-            return View(chitiet);  
-            
+            return View(chitiet);
+
         }
         [HttpGet]
         public ActionResult SuaDonHang(int id)
@@ -313,7 +320,7 @@ namespace WebBanRauProject.Controllers
             return View(donhang);
         }
         [HttpPost]
-        public ActionResult SuaDonHang(int id,FormCollection collection)
+        public ActionResult SuaDonHang(int id, FormCollection collection)
         {
             var donhang = data.DONDATHANGs.First(d => d.MADH == id);
 
@@ -325,9 +332,12 @@ namespace WebBanRauProject.Controllers
 
             return RedirectToAction("DanhSachDonHang");
         }
-        
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult MonAn()
         {
             return View(data.QuanLyGoiYMonAns.ToList());
@@ -336,7 +346,7 @@ namespace WebBanRauProject.Controllers
         [HttpGet]
         public ActionResult ThemmoiMonAn()
         {
-            
+
 
             return View();
         }
