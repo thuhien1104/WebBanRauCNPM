@@ -3,50 +3,84 @@
     ViewBag.Title = "ChitietKhachHang";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: 400px;
+    }
 
-<h2>Chi Tiết Khách Hàng</h2>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+        }
+</style>
+
+<h2 style="color: brown ; font-size:20px; text-align:center" >Chi Tiết Khách Hàng</h2>
 
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<table id="table">
+    <tr>
+        <th>
             Tên khách hàng:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.HOTEN)
-        </dd>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Địa chỉ:
+        </th>
 
-        <dt>
-            Địa chỉ: 
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model=>model.DiachiKH)
-        </dd>
-
-        <dt>
+        <td>
+            @Html.DisplayFor(model => model.DiachiKH)
+        </td>
+    </tr>
+    <tr>
+        <th>
             Ngày sinh:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @String.Format("{0:dd/MM/yyyy}", Model.NGAYSINH)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    <tr>
+        <th>
             Điện thoại:
-        </dt>
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model=>model.DIENTHOAIKH)
-        </dd>
+        <td>
+            @Html.DisplayFor(model => model.DIENTHOAIKH)
+        </td>
+    </tr>
+        
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Sửa", "SuaKH", new { makh = Model.MAKH }) |
-    @Html.ActionLink("Trở về", "KhachHang")
+</table>
+<p style="text-align:center; margin-top:10px">
+    <button>
+        @Html.ActionLink("Trở về", "KhachHang")
+    </button>
 </p>
 
 

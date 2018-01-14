@@ -15,12 +15,20 @@ namespace WebBanRauProject.Controllers
         public ActionResult Index()
         {
             Admin ad = (Admin)Session["Taikhoanadmin"];
-            if (ad == null)
+            if (ad != null)
+            {
+                var admin = data.Admins.First(k => k.ID == ad.ID);
+                return View(admin);
+            }
+            else
                 return RedirectToAction("Login");
-            return View();
+            
         }
-
-
+        
+        public ActionResult Rau()
+        {
+            return View(data.SANPHAMs.ToList());
+        }
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
@@ -46,7 +54,7 @@ namespace WebBanRauProject.Controllers
                 if (ad != null)
                 {
                     Session["Taikhoanadmin"] = ad;
-                    return RedirectToAction("Rau", "Admin");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
@@ -432,26 +440,115 @@ namespace WebBanRauProject.Controllers
         public ActionResult SuaMonAn(int id)
         {
             //lay doi tuong
-            QuanLyGoiYMonAn mon = data.QuanLyGoiYMonAns.SingleOrDefault(n => n.MASO == id);
-            ViewBag.MaSO = mon.MASO;
-            if (mon == null)
+            var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
+            return View(mon);
+        }
+        [HttpPost]
+        public ActionResult SuaMonAn(int id, FormCollection collection, HttpPostedFileBase fileupload)
+        {
+            var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    mon.HINHANH = fileName;
+                }
+            }
+
+
+            string tenMonAn = collection["TENMONAN"];
+            string moTa = collection["MOTA"];
+
+
+            mon.TENMONAN = tenMonAn;
+            mon.MOTA = moTa;
+
+            UpdateModel(mon);
+            data.SubmitChanges();
+
+            return RedirectToAction("ChitietMonAn", new { id = id });
+        }
+
+
+        //them admin:
+        [HttpGet]
+        public ActionResult ThemAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ThemAdmin(Admin ad, HttpPostedFileBase fileupload)
+        {
+
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho Admin nào";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    ad.Hinhanh = fileName;
+
+                    data.Admins.InsertOnSubmit(ad);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        
+        public ActionResult XoaAdmin(int id)
+        {
+            //lấy đối tượng :
+            Admin ad = data.Admins.SingleOrDefault(n => n.ID == id);
+            ViewBag.id = ad.ID;
+            if (ad == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(mon);
+            return View(ad);
         }
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult SuaMonAn(QuanLyGoiYMonAn mon)
+
+        [HttpPost, ActionName("XoaAdmin")]
+        public ActionResult XacNhanXoaAdmin(int id)
         {
-            if (ModelState.IsValid)
+            //lấy ra đối tượng cần xóa theo mã:
+            Admin ad = data.Admins.SingleOrDefault(n => n.ID == id);
+            ViewBag.id = ad.ID;
+            if (ad == null)
             {
-                //Luu vao CSDL
-                UpdateModel(mon);
-                data.SubmitChanges();
+                Response.StatusCode = 404;
+                return null;
             }
-            return RedirectToAction("MonAn");
+            data.Admins.DeleteOnSubmit(ad);
+            data.SubmitChanges();
+            return RedirectToAction("Admin");
         }
 
     }

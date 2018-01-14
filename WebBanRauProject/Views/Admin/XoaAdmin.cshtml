@@ -1,0 +1,57 @@
+﻿@model WebBanRauProject.Models.Admin
+
+@{
+    ViewBag.Title = "XoaAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XoaAdmin</h2>
+
+<h3>bạn có chắc muốn xóa Admin này ?</h3>
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            TÊN TÀI KHOẢN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAdmin)
+        </dd>
+
+        <dt>
+            MẬT KHẨU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordAdmin)
+        </dd>
+
+        <dt>
+            TÊN SỬ DỤNG
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+            HÌNH ẢNH
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hinhanh)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ", "Index")
+        </div>
+    }
+</div>

@@ -5,41 +5,45 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>
+<h2 style="color: brown ; font-size:20px">
     MÓN ĂN
 </h2>
 
-<p>
-    @Html.ActionLink("Thêm Mới Món Ăn", "ThemmoiMonAn")
-</p>
-<table class="table">
-   
-    <tr>
-        <th style="width:200px">TÊN MÓN ĂN</th>
-        <th style="width:200px">MÔ TẢ</th>
-        <th style="width:200px">HÌNH ẢNH</th>
-        <th style="width:200px">CHỨC NĂNG</th>
-    </tr>
-    
+<button style="margin-top:10px">
+    <p style="font-size:25px; color:cornflowerblue">
+        @Html.ActionLink("Thêm Mới Món Ăn", "ThemmoiMonAn")
+    </p>
+</button>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TENMONAN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOTA)
-        </td>
-        <td>
-            <img src="@Url.Content("~/images/"+item.HINHANH)" width="150px" height="150px">
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "SuaMonAn", new { id=item.MASO }) |
-            @Html.ActionLink("Xem chi tiết", "ChitietMonAn", new { id=item.MASO }) |
-            @Html.ActionLink("Xóa", "XoaMonAn", new { id=item.MASO })
-        </td>
-    </tr>
-}
+    <table id="table">
 
-</table>
+        <tr style="font-weight: bold;">
+            <th style="text-align:center;width: 15%">TÊN MÓN ĂN</th>
+            <th style="text-align:center;width: 55%">MÔ TẢ</th>
+            <th style="text-align:center;width: 15%">HÌNH ẢNH</th>
+            <th style="text-align:center;width: 15%">CHỨC NĂNG</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENMONAN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MOTA)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/images/"+item.HINHANH)" style="width: 150px; height: 150px">
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaMonAn", new { id = item.MASO }) |
+                    @Html.ActionLink("Xem chi tiết", "ChitietMonAn", new { id = item.MASO }) |
+                    @Html.ActionLink("Xóa", "XoaMonAn", new { id = item.MASO })
+                </td>
+            </tr>
+        }
+
+    </table>
 
