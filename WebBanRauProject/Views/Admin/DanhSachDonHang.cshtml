@@ -1,13 +1,17 @@
 ﻿@model IEnumerable<WebBanRauProject.Models.DONDATHANG>
-
 @{
     ViewBag.Title = "DanhSachDonHang";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Danh Sách Đơn Hàng</h2>
-
-
+<form action="~/Views/Admin/DanhSachDonHangTheoTG.cshtml">
+    <div class="col-md-10">
+        <input type="date" name="NgayDat" id="NgayNhap"/>
+        @Html.ActionLink("Xem", "DanhSachDonHangTheoTG", new { });
+    </div>
+</form>
+        
 <table class="table">
     <tr>
         <th>
@@ -28,42 +32,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @if(item.DATHANHTOAN == true)
+    @foreach (var item in Model)
             {
-                @ViewBag.DaThanhToan
-            }
-            else
-            {
-                @ViewBag.ChuaThanhToan
-            }
-        </td>
-        <td>
-            @if (item.TINHTRANGGIAOHANG == true)
-            {
-                @ViewBag.DaGiaoHang
-            }
-            else
-            {
-                @ViewBag.ChuaGiaoHang
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGAYDAT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGAYGIAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
-        </td>
-        <td>
-            @Html.ActionLink("Cập nhập", "SuaDonHang", new { id=item.MADH }) |
-            @Html.ActionLink("Xem", "ChiTietDonHang", new { id=item.MADH })
-        </td>
-    </tr>
-}
+        <tr>
+            <td>
+                @if (item.DATHANHTOAN == true)
+                {
+                    @ViewBag.DaThanhToan
+                }
+                else
+                {
+                    @ViewBag.ChuaThanhToan
+                }
+            </td>
+            <td>
+                @if (item.TINHTRANGGIAOHANG == true)
+                {
+                    @ViewBag.DaGiaoHang
+                }
+                else
+                {
+                    @ViewBag.ChuaGiaoHang
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYDAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYGIAO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhập", "SuaDonHang", new { id = item.MADH }) |
+                @Html.ActionLink("Xem", "ChiTietDonHang", new { id = item.MADH })
+            </td>
+        </tr>
+    }
 
 </table>

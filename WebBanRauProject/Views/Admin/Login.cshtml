@@ -2,50 +2,35 @@
 @{
     Layout = null;
 }
-
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Simple Login Form</title>
-    <meta charset="UTF-8" />
-    <meta name="Designer" content="PremiumPixels.com">
-    <meta name="Author" content="$hekh@r d-Ziner, CSSJUNTION.com">
-    <link rel="stylesheet" type="text/css" href="~/Content/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/css/structure.css">
+    <meta charset="UTF-8">
+    <title>Log-in</title>
+
+
+    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
 </head>
+<body    style="    background-color: #afa4a4">
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-<body>
-    <h4 style="color:red; text-align:center">@ViewBag.Thongbao</h4>
-
-    
-        <form class="box login">
-
-            
-            <fieldset class="boxBody">
-
-
-                <label>Username Admin</label>
-                <input type="text" name="username" tabindex="1" placeholder="Vui lòng nhập Username" required>
-
-                <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password Admin</label>
-                <input type="password" name="password" tabindex="2" required>
-                @ViewData["Loi"]
-
-            </fieldset>
-
-            <footer>
-                <label><input type="checkbox" tabindex="3">Keep me logged in</label>
-                <input type="submit" class="btnLogin" value="Login" tabindex="4">
-            </footer>
-
+    <div class="login-card">
+        <h1>Đăng nhập</h1><br>
+        <form>
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <text style="color:red; text-align:center;font-size:10px">@ViewBag.Thongbao</text>
+            <text style="font-size:10px ; color:red">@ViewData["Loi"]</text>
+            <input type="submit" name="login" class="login login-submit" value="Login">
         </form>
-
-    <footer id="main">
-        <a href="http://wwww.cssjunction.com">Simple Login Form (HTML5/CSS3 Coded) by CSS Junction</a> | <a href="http://www.premiumpixels.com">PSD by Premium Pixels</a>
-    </footer>
+    </div>
+}
+    <!-- <div id="error"><img src="https://dl.dropboxusercontent.com/u/23299152/Delete-icon.png" /> Your caps-lock is on.</div> -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 
 </body>
-}
 </html>

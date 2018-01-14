@@ -275,10 +275,9 @@ namespace WebBanRauProject.Controllers
             ViewBag.ChuaThanhToan = "Chưa thanh toán";
             ViewBag.DaGiaoHang = "Đã giao hàng";
             ViewBag.ChuaGiaoHang = "Chưa giao hàng";
-            List<DONDATHANG> lstDonHang = data.DONDATHANGs.ToList();
+            List<DONDATHANG> lstDonHang = data.DONDATHANGs.OrderByDescending(d=>d.NGAYDAT).ToList();
             return View(lstDonHang);
         }
-
         public ActionResult ChiTietDonHang(int id)
         {
             var chitiet = data.CHITIETDONHANGs.Where(ct => ct.MADH == id);
@@ -305,9 +304,13 @@ namespace WebBanRauProject.Controllers
                 {
                     var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
                     sp.SOLUONGTON -= item.SOLUONG;
-                    UpdateModel(sp);
+                    UpdateModel(sp);                    
                     data.SubmitChanges();
                 }
+                var donhang = data.DONDATHANGs.Where(dh => dh.MADH == id).First();
+                donhang.TINHTRANGGIAOHANG = true;
+                UpdateModel(donhang);
+                data.SubmitChanges();
                 return RedirectToAction("DanhSachDonHang");
             }
             return View(chitiet);
@@ -442,19 +445,13 @@ namespace WebBanRauProject.Controllers
         [ValidateInput(false)]
         public ActionResult SuaMonAn(QuanLyGoiYMonAn mon)
         {
-
-
             if (ModelState.IsValid)
             {
-
-                //Luu vao CSDL  
-
+                //Luu vao CSDL
                 UpdateModel(mon);
                 data.SubmitChanges();
-
             }
             return RedirectToAction("MonAn");
-
         }
 
     }
