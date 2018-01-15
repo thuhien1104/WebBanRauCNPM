@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLBANRAUCU" Class="dbQLBANRAUCUDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DEATH\SQLEXPRESS;Initial Catalog=QLBANRAUCU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRAUCUConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SPBanChay" Member="SPBanChays">
+    <Type Name="SPBanChay">
+      <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="GIABAN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ANHSP" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NGAYCAPNHAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SOLUONGTON" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SOLUOMHMUA" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Admin" Member="Admins">
     <Type Name="Admin">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -65,6 +76,7 @@
       <Column Name="DIACHI" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HINHANH" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="NHACUNGCAP_SANPHAM" Member="SANPHAMs" ThisKey="MANCC" OtherKey="MANCC" Type="SANPHAM" />
     </Type>
   </Table>

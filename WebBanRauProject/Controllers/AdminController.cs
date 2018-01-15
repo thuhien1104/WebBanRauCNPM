@@ -24,11 +24,6 @@ namespace WebBanRauProject.Controllers
                 return RedirectToAction("Login");
             
         }
-        
-        public ActionResult Rau()
-        {
-            return View(data.SANPHAMs.ToList());
-        }
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
