@@ -1,94 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.5" name="dbQLBANRAUCU">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.5" name="dbQLBANRAUCU">
   <DataContextMoniker Name="/dbQLBANRAUCUDataContext" />
   <nestedChildShapes>
-    <classShape Id="efb452ee-32b8-47c4-bfc8-092822639ae9" absoluteBounds="3.5, 1, 2, 2.5401025390625005">
-      <DataClassMoniker Name="/dbQLBANRAUCUDataContext/SANPHAM" />
+    <classShape Id="fdebdd96-b723-455d-9b1c-e47e363fa54e" absoluteBounds="4.875, 3, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbQLBANRAUCUDataContext/SPBanChay" />
       <nestedChildShapes>
-        <elementListCompartment Id="be89641f-8e8b-4639-959a-8e7d8769d0fe" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2c9fb64e-1610-4e96-a7cd-0f68166332cb" absoluteBounds="4.89, 3.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b5e8e398-d20c-4306-898c-60b0e67d482a" absoluteBounds="3.75, 4.75, 2, 1.3862939453125005">
+    <classShape Id="4a47cf6f-0743-4034-9e27-283659901c9d" absoluteBounds="0.75, 0.75, 2, 1.7708968098958331">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/Admin" />
       <nestedChildShapes>
-        <elementListCompartment Id="8690e051-c295-4466-87b0-58179ec5af41" absoluteBounds="3.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cace3c4c-3091-4723-aa2a-e507a0fef933" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ac19d7e4-da53-42ef-ba6d-f6ee58337b28" absoluteBounds="6.25, 1.375, 2, 1.5785953776041666">
+    <classShape Id="fda55d31-eb06-41de-9ed9-728c4626522a" absoluteBounds="6.25, 7.375, 2, 1.5785953776041666">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/CHITIETDONHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="5dd82262-e407-41a4-ad8e-a4d1a3234497" absoluteBounds="6.265, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b1fcc737-c21e-4bc2-9db1-81ed700f5310" absoluteBounds="6.265, 7.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ba1eb71d-de52-4e99-a7a5-feaf5e1704a4" absoluteBounds="3.5, 8.25, 2, 1.9631982421874987">
+    <classShape Id="a6429a40-8c24-452f-940b-1724b5a56ea4" absoluteBounds="3.5, 11.25, 2, 1.9631982421874987">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/DONDATHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="3b491ba4-32cc-4bb7-ad66-2fa0418bd8a6" absoluteBounds="3.515, 8.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cf837772-43be-4f0c-8c61-eac93ddb7590" absoluteBounds="3.515, 11.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="aa42b7dd-0498-4016-8d3c-80568b3f413f" absoluteBounds="0.75, 8.125, 2, 2.1554996744791666">
+    <classShape Id="da6a4f8b-1a84-43f6-b043-a36496d3f79d" absoluteBounds="0.75, 11.125, 2, 2.1554996744791666">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/KHACHHANG" />
       <nestedChildShapes>
-        <elementListCompartment Id="2d699121-ce4a-428a-b70c-2c2d3e006d7c" absoluteBounds="0.765, 8.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="068fc3f5-1da2-4923-86e5-49fc0d8a3693" absoluteBounds="0.765, 11.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f9a876a9-08c6-44b7-aaf6-81593c7ac5cc" absoluteBounds="0.75, 1.625, 2, 1.1939925130208335">
+    <classShape Id="def1b91b-eece-4a64-917a-313e0ba35efc" absoluteBounds="0.75, 7.625, 2, 1.1939925130208344">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/LOAIRAU" />
       <nestedChildShapes>
-        <elementListCompartment Id="9338c956-b881-434f-ae01-bd9ab9eedc68" absoluteBounds="0.765, 2.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d4b0a78b-b17f-4b9e-a383-f04b7d86b017" absoluteBounds="0.765, 8.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="268691b3-b18c-4272-9445-7747d71be3c3" absoluteBounds="0.75, 5.375, 2, 1.7708968098958327">
+    <classShape Id="1b1a7cfe-4102-4b7a-830b-ec8c9e0b116c" absoluteBounds="0.75, 4.25, 2, 1.9631982421875005">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/NHACUNGCAP" />
       <nestedChildShapes>
-        <elementListCompartment Id="ae63bf0b-a717-4576-95cc-90b4a65c673f" absoluteBounds="0.765, 5.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="da065ea2-fd0b-495f-a713-b0b10340bfed" absoluteBounds="0.765, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c84df349-1da8-421c-b162-06ae1d183b2a" absoluteBounds="6.75, 4.75, 2, 1.3862939453125005">
+    <classShape Id="ac0b44bd-cff5-457c-87fc-3e3bd3a74db0" absoluteBounds="7.75, 0.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/QuanLyGoiYMonAn" />
       <nestedChildShapes>
-        <elementListCompartment Id="1e8ed52d-da22-48cc-bfad-25613b1452a1" absoluteBounds="6.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="76cfaf45-223b-4f80-80be-d6ca631296b2" absoluteBounds="7.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b89057ce-257c-4396-aeae-3f15e76960bc" absoluteBounds="6.75, 7.75, 2, 1.5785953776041666">
+    <classShape Id="ba118aef-b8cc-4fdf-a247-b4433a687faf" absoluteBounds="7.75, 3.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/dbQLBANRAUCUDataContext/QuanLyTinTuc" />
       <nestedChildShapes>
-        <elementListCompartment Id="59e499e3-2c5e-4cd0-be21-d91bf3ec5dfd" absoluteBounds="6.765, 8.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0a3441a1-6203-45d3-80b6-576d05b968b0" absoluteBounds="7.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 2.16429768880208); (6.25 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/dbQLBANRAUCUDataContext/SANPHAM/SANPHAM_CHITIETDONHANG" />
-      <nodes>
-        <classShapeMoniker Id="efb452ee-32b8-47c4-bfc8-092822639ae9" />
-        <classShapeMoniker Id="ac19d7e4-da53-42ef-ba6d-f6ee58337b28" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 9.80214680989583); (6.46875 : 9.80214680989583); (6.46875 : 2.95359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="a0bf4d0e-3943-4256-b9b4-33ac84499e03" absoluteBounds="3.5, 7, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/dbQLBANRAUCUDataContext/SANPHAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2dda97a9-0844-4179-bee4-6292c5515127" absoluteBounds="3.515, 7.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 12.2315991210937); (7.25 : 12.2315991210937); (7.25 : 8.95359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbQLBANRAUCUDataContext/DONDATHANG/DONDATHANG_CHITIETDONHANG" />
       <nodes>
-        <classShapeMoniker Id="ba1eb71d-de52-4e99-a7a5-feaf5e1704a4" />
-        <classShapeMoniker Id="ac19d7e4-da53-42ef-ba6d-f6ee58337b28" />
+        <classShapeMoniker Id="a6429a40-8c24-452f-940b-1724b5a56ea4" />
+        <classShapeMoniker Id="fda55d31-eb06-41de-9ed9-728c4626522a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.23159912109375); (3.5 : 9.23159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 12.2315991210937); (3.5 : 12.2315991210937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbQLBANRAUCUDataContext/KHACHHANG/KHACHHANG_DONDATHANG" />
       <nodes>
-        <classShapeMoniker Id="aa42b7dd-0498-4016-8d3c-80568b3f413f" />
-        <classShapeMoniker Id="ba1eb71d-de52-4e99-a7a5-feaf5e1704a4" />
+        <classShapeMoniker Id="da6a4f8b-1a84-43f6-b043-a36496d3f79d" />
+        <classShapeMoniker Id="a6429a40-8c24-452f-940b-1724b5a56ea4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.22199625651042); (3.5 : 2.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 8.16429768880208); (6.25 : 8.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbQLBANRAUCUDataContext/SANPHAM/SANPHAM_CHITIETDONHANG" />
+      <nodes>
+        <classShapeMoniker Id="a0bf4d0e-3943-4256-b9b4-33ac84499e03" />
+        <classShapeMoniker Id="fda55d31-eb06-41de-9ed9-728c4626522a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.22199625651042); (3.5 : 8.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbQLBANRAUCUDataContext/LOAIRAU/LOAIRAU_SANPHAM" />
       <nodes>
-        <classShapeMoniker Id="f9a876a9-08c6-44b7-aaf6-81593c7ac5cc" />
-        <classShapeMoniker Id="efb452ee-32b8-47c4-bfc8-092822639ae9" />
+        <classShapeMoniker Id="def1b91b-eece-4a64-917a-313e0ba35efc" />
+        <classShapeMoniker Id="a0bf4d0e-3943-4256-b9b4-33ac84499e03" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.67234537760417); (3.59375 : 6.67234537760417); (3.59375 : 3.5401025390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.71559895833333); (4.15625 : 5.71559895833333); (4.15625 : 7)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbQLBANRAUCUDataContext/NHACUNGCAP/NHACUNGCAP_SANPHAM" />
       <nodes>
-        <classShapeMoniker Id="268691b3-b18c-4272-9445-7747d71be3c3" />
-        <classShapeMoniker Id="efb452ee-32b8-47c4-bfc8-092822639ae9" />
+        <classShapeMoniker Id="1b1a7cfe-4102-4b7a-830b-ec8c9e0b116c" />
+        <classShapeMoniker Id="a0bf4d0e-3943-4256-b9b4-33ac84499e03" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

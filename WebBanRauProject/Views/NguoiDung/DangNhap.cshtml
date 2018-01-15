@@ -1,35 +1,66 @@
 ﻿
+
 @{
     ViewBag.Title = "DangNhap";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4 style="color:red;text-align:center">@ViewBag.Thongbao</h4>
-<table align="center">
-    <h3 style="text-align:center">ĐĂNG NHẬP</h3>
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr style="height:40px;text-align:center">
-            <td>Tên đăng nhập: </td>
-            <td>
-                @Html.TextBox("TenDN")
-                @ViewData["Loi1"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td>Mật khẩu: </td>
-            <td>
-                @Html.Password("Matkhau")
-                @ViewData["Loi2"]
-            </td>
-        </tr>
-        <tr style="height:40px">
-            <td></td>
-            <td>
-                <input type="submit" value="Đăng nhập" />
-            </td>
-        </tr>
-    }
-</table>
+
+<div style="height:100px;font-weight:bold;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:25px;color:white; background-color: green;background-size:50px;border-radius:15px;padding :15px">Đăng nhập</span></div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="col-md-3"></div>
+            <div class="col-md-6 check-name">
+               
+                <div>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                             
+                            <div class="col-sm-12">
+                                
+                                <input id="TenDN" name="TenDN" type="text" class="form-control" placeholder="Tên đăng nhập">
+                                
+                                   
+                                    @ViewData["Loi1"]
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group" >
+                            <div class="col-sm-12">
+                                <input id="Matkhau" name="Matkhau" type="password" class="form-control" placeholder="Mật khẩu">
+                                @*@Html.Password("Matkhau")*@
+                                @ViewData["Loi2"]
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#" style="color:darkblue">Quên mật khẩu?</a>
+                    <br>
+
+                    <tr>
+                        <td></td>
+                        <td >
+                            
+                            <input type="submit" value="Đăng nhập" style="height:40px;background-color:green;color:black;border-radius:10px;padding:10px"/>
+                        </td>
+                    </tr>
+
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+
+           
+
+        }
+
+
+
+
+
+
 

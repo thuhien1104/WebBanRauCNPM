@@ -1,10 +1,15 @@
-﻿@model IEnumerable<WebBanRauProject.Models.SANPHAM>
+﻿@*@model IEnumerable<WebBanRauProject.Models.SANPHAM>*@
+@using WebBanRauProject.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+
+
 @{ 
     ViewBag.Title = "Web bán rau sạch";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 <div class="container">
-    <span style="text-align: center;color: white; background-color: red"> Phân loại sản phẩm</span>
+    <div class="row articles col-md-12 col-sm-12" style="height:100px;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:20px;color:black; background-color: white;background-size:50px;border-radius:15px;padding :15px">Sản phẩm theo loại</span></div>
     <div class="row articles">
         @foreach (var sanpham in Model)
         {
@@ -15,10 +20,11 @@
                 <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
                 <div class="text">
                     <a href="@Url.Action("Details" , "RauShop" , new { id = sanpham.MALOAI})">
-                        <span>@sanpham.TENSP</span>
+                        <div style="text-align:center;font-size:18px;font-style:normal;font-weight:bold;text-decoration-line:underline;text-decoration-color:green;font-synthesis:weight">@sanpham.TENSP</div>
                     </a>
                     <p>
-                        <span>@sanpham.GIABAN/kg</span>
+                        <div style="font-size:15px; font-weight:600">@sanpham.GIABAN/kg</div>
+
                     </p>
                 </div>
             </div>
@@ -28,4 +34,19 @@
     <!--end-articles-->
         }
     </div>
+</div>
+
+
+<div style="text-align:center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang">
+
+        @Html.PagedListPager(Model, page => Url.Action("SanPhamTheoLoai", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
 </div>

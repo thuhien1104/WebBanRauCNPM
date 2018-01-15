@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebBanRauProject.Models.NHACUNGCAP>
+
+@{
+    ViewBag.Title = "NCC";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@Html.ActionLink("Thêm", "ThemNCC") 
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            
+            <th style="width:200px">Tên nhà cung cấp</th>
+            <th style="width:200px">Địa chỉ</th>
+            <th style="width:200px">Hình ảnh</th>
+
+            <th style="width:200px">Số điện thoại</th>
+            <th style="width:200px">Mô tả</th>
+            <th style="width:200px">Chức năng</th>
+  
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIACHI)
+        </td>
+
+        <td>
+            <img src="@Url.Content("~/images/"+item.HINHANH)" width="150px" height="150px">
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DIENTHOAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTA)
+        </td>
+
+
+        <td>
+            @Html.ActionLink("Xem", "ChitietNCC", new { id=item.MANCC }) |
+            @Html.ActionLink("Sửa", "SuaNCC", new { id = item.MANCC }) |
+            
+            @Html.ActionLink("Xóa", "XoaNCC", new { id=item.MANCC })
+        </td>
+    </tr>
+}
+
+</table>

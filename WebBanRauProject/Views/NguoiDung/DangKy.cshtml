@@ -1,9 +1,104 @@
 ﻿
 @{
     ViewBag.Title = "DangKy";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="panel panel-default">
+
+
+   <div style="height:100px;font-weight:bold;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:25px;color:white; background-color: green;background-size:50px;border-radius:15px;padding :15px">Đăng kí</span></div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="col-md-3"></div>
+            <div class="col-md-6 check-name">
+
+                <div>
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input  id="HotenKH" name="HotenKH" type="text" class="form-control" placeholder="Họ tên khách hàng" id="HotenKH">
+                                @ViewData["Loi1"]
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12">
+
+                                <input id="TenDN" name="TenDN" type="text" class="form-control" placeholder="Tên đăng nhập">
+                                @ViewData["Loi2"]
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input id="Matkhau" name="Matkhau" type ="password" class="form-control" placeholder="Mật khẩu">
+                               
+                                @ViewData["Loi3"]
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input id="Matkhaunhaplai" name="Matkhaunhaplai" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+
+                                @ViewData["Loi4"]
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input id="Ngaysinh" name="Ngaysinh" type="date" class="form-control" placeholder="Ngày sinh">
+                               
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input id="Diachi" name="Diachi" type="text" class="form-control" placeholder="Địa chỉ">
+                                @ViewData["Loi5"]
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="height:20px"></div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input id="Dienthoai" name="Dienthoai" type="number" class="form-control" placeholder="Điện thoại">
+                                @ViewData["Loi6"]
+
+                            </div>
+                        </div>
+
+                    </form>
+                    <a href="#" style="color:darkblue">Quên mật khẩu?</a>
+                    <br>
+
+                    <tr>
+                        <td></td>
+                        <td>
+
+                            <input type="submit" value="Đăng kí" style="height:40px;background-color:green;color:black;border-radius:10px;padding:10px;" />
+                        </td>
+                    </tr>
+
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+
+
+}
+
+
+@*<div class="panel panel-default">
 
 
     <div id="collapseOne" class="panel-collapse collapse in panel-body">
@@ -73,4 +168,4 @@
             }
         </table>
     </div>
-</div>
+</div>*@

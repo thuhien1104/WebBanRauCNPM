@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebBanRauProject.Models.NHACUNGCAP>
+
+@{
+    ViewBag.Title = "NhaCC";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container">
+
+    <div class="row articles col-md-12 col-sm-12" style="height:100px;text-align:center; margin-top:60px;"><span style="text-align: center;color:black; font-size:25px; background-color: white;background-size:50px;border-radius:15px;padding :15px">Nhà cung cấp</span></div>
+
+    <div class="row articles">
+        @foreach (var item in Model)
+            {
+    <!--articles-->
+
+
+            <div class="col-md-3 col-sm-6">
+                <a href="@Url.Action("NhaCC", "RauShop", new { id = item.MANCC })">
+                    <img alt="@item.HINHANH" src="~/images/@item.HINHANH" />
+                </a>
+                <div class="text">
+                   
+                        <div style="text-align:center;font-size:18px;font-weight:bold;text-decoration-color:green">@item.TENCC</div>
+                   
+                    <p>
+                        <div style="font-size:15px; font-weight:600">@item.DIACHI</div>
+                    </p>
+                    <p>
+                        <div style="font-size:15px; font-weight:600">@item.DIENTHOAI</div>
+                    </p>
+                    <p>
+                        <div style="font-size:15px; font-weight:600">@item.MOTA</div>
+                    </p>
+                    </div>
+                    </div>
+
+                
+           
+
+
+
+    <!--end-articles-->
+        }
+    </div>
+</div>
