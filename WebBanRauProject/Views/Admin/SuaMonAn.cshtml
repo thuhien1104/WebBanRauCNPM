@@ -12,10 +12,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+       
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MASO)
-
+        <div style="width:50%;margin-left:200px">
         <div class="form-group">
             @Html.LabelFor(model => model.TENMONAN,"TÊN MÓN ĂN", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -48,8 +49,10 @@
                     @Html.ActionLink("TRỞ VỀ", "MonAn")
                 </button>
             </div>
-            
+            </div>
+          
         </div>
+        
     </div>
 }
 

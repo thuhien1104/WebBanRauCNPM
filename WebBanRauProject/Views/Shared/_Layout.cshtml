@@ -1,44 +1,210 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    @*<title>SHKShop</title>*@
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" media="screen">
+    <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/responsive.css" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+                    fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div style="position:fixed; z-index:9999999; right:10px; bottom:10px;" class="fb-page" data-tabs="messages"
+         data-href="https://www.facebook.com/SHK-1870324903280300/?modal=admin_todo_tour" data-width="250" data-height="300"
+         data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+    <div class="top-strip">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                <div class="col-md-6 user">
+                    <p>
+                        Chào mừng đến với SHK
+                    </p>
+                </div>
+                <div class="col-md-6 language">
+                    <ul>
+                        <li>@Html.Action("DangNhapPartial", "NguoiDung")</li>
+                        <li>
+                            <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
+                                <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="container header">
+        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="~/images/logo.png" alt="logo"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="@Url.Action("Index", "RauShop")">Trang chủ</a></li>
+                        <li class="dropdown">@Html.Action("LoaiSanPham", "RauShop")</li>
+
+
+
+                        <li><a href="@Url.Action("GioHang","GioHang")">Giỏ hàng</a></li>
+                        <li><a href="">Thanh toán</a></li>
+                        <li><a href="@Url.Action("ThongTin", "RauShop")">Thông tin cửa hàng</a></li>
+                        <li><a href="@Url.Action("LienHe", "RauShop")">Liên hệ</a></li>
+                        <li><a href="@Url.Action("NhaCC", "RauShop")">Nhà cung cấp</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <div class="page-title">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 produti">
+                        </div>
+                        <div class="col-md-2 cart">
+                            <h4>@Html.Action("GioHangPartial", "GioHang")</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+
+    <!--flex-slider-->
+
+    <!--end-flex-slider-->
+    <!--Icon Blocks-->
+   
+    <!--end Icon Blocks-->
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- partners box -->
+    
+    <!--end-partners box -->
+    <!--articles-->
+    
+    <!--end-articles-->
+    <!--prize-->
+    <div class="prize col-md-12">
+        <div class="container">
+            <h1></h1>
+        </div>
+    </div>
+    <!--end-prize-->
+    <!--footer-->
+    <div class="full-footer">
+        <div class="container-full">
+            <div class="container info">
+                <div class="row">
+                    <div class="col-md-4 addres">
+                        <img src="~/images/footer-logo.png" alt="logo">
+                        <h6 style="color: black; font-weight: bold; ">SHK Webshop,LLC</h6>
+                        <p style="color: black; font-weight: bold; ">
+                            Địa chỉ: 184/37 Âu Dương Lân, P3, Quận 8
+                        </p>
+                        <p style="color: black; font-weight: bold; ">
+                            Phone 0918 158 6700
+                        </p>
+                    </div>
+                    <div class="col-md-2 account">
+                        <h4 style="color: black; font-weight: bold; ">Thông tin tài khoản</h4>
+                        <ul style="color: black; font-weight: bold; ">
+                            <li><a href="#" style="color: black; font-weight: bold; ">Giỏ hàng</a></li>
+                            <li><a href="#" style="color: black; font-weight: bold; ">Tài khoản</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 assistance">
+                        <h4 style="color: black; font-weight: bold; ">Thông tin cửa hàng</h4>
+                        <ul>
+                            <li> <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;<a href="#" style="color: black; font-weight: bold; ">phetcm@gmail.com - info@thayphet.net </a></li>
+                            <li><i class="fa fa-facebook-square" aria-hidden="true"></i>  &nbsp;<a href="https://www.facebook.com/search/top/?q=hutech%20confessions" style="color: black; font-weight: bold; ">www.facebook.com</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4 about">
+                        <h4 style="color: black; font-weight: bold; ">Giới thiệu</h4>
+                        <p style="color: black; font-weight: bold; ">
+                            SHK Shop chuyên cung cấp rau củ sạch và an toàn cho mọi gia đình<br>
+                            Đến với chúng tôi bạn có thể mua được thực phẩm tốt và an toàn, giá cả hợp lí.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end-addres-->
+        <div class="container">
+            <div class="row bottom-strip">
+                <div class="col-md-6 rights">
+                    <p>SHK Shop 2017</p>
+                </div>
+                <div class="col-md-6 social">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-asterisk"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end-footer-->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/modernizr.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        // jQuery
+        (function ($) {
+            "use strict";
+            $(document).ready(function () {
+                // Main Slider
+                $('.main-flexslider').flexslider({
+                    directionNav: true,
+                    controlNav: false,
+                    animation: "fade",
+                    slideshowSpeed: 7000,
+                    prevText: "",
+                    nextText: "",
+                });
+            });
+        })(jQuery);
+    </script>
 </body>
 </html>
+

@@ -30,6 +30,9 @@ namespace WebBanRauProject.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertAdmin(Admin instance);
+    partial void UpdateAdmin(Admin instance);
+    partial void DeleteAdmin(Admin instance);
     partial void InsertTEMP(TEMP instance);
     partial void UpdateTEMP(TEMP instance);
     partial void DeleteTEMP(TEMP instance);
@@ -57,7 +60,7 @@ namespace WebBanRauProject.Models
     #endregion
 		
 		public dbQLBANRAUCUDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString2"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString3"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -303,8 +306,10 @@ namespace WebBanRauProject.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
-	public partial class Admin
+	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
@@ -316,11 +321,28 @@ namespace WebBanRauProject.Models
 		
 		private string _Hinhanh;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnUserAdminChanging(string value);
+    partial void OnUserAdminChanged();
+    partial void OnPasswordAdminChanging(string value);
+    partial void OnPasswordAdminChanged();
+    partial void OnHotenChanging(string value);
+    partial void OnHotenChanged();
+    partial void OnHinhanhChanging(string value);
+    partial void OnHinhanhChanged();
+    #endregion
+		
 		public Admin()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -331,7 +353,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._ID != value))
 				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
 					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
@@ -347,7 +373,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._UserAdmin != value))
 				{
+					this.OnUserAdminChanging(value);
+					this.SendPropertyChanging();
 					this._UserAdmin = value;
+					this.SendPropertyChanged("UserAdmin");
+					this.OnUserAdminChanged();
 				}
 			}
 		}
@@ -363,7 +393,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._PasswordAdmin != value))
 				{
+					this.OnPasswordAdminChanging(value);
+					this.SendPropertyChanging();
 					this._PasswordAdmin = value;
+					this.SendPropertyChanged("PasswordAdmin");
+					this.OnPasswordAdminChanged();
 				}
 			}
 		}
@@ -379,7 +413,11 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._Hoten != value))
 				{
+					this.OnHotenChanging(value);
+					this.SendPropertyChanging();
 					this._Hoten = value;
+					this.SendPropertyChanged("Hoten");
+					this.OnHotenChanged();
 				}
 			}
 		}
@@ -395,8 +433,32 @@ namespace WebBanRauProject.Models
 			{
 				if ((this._Hinhanh != value))
 				{
+					this.OnHinhanhChanging(value);
+					this.SendPropertyChanging();
 					this._Hinhanh = value;
+					this.SendPropertyChanged("Hinhanh");
+					this.OnHinhanhChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1414,7 +1476,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string TENCC
 		{
 			get
@@ -1434,7 +1496,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(MAX)")]
 		public string DIACHI
 		{
 			get
@@ -1991,7 +2053,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true, DeleteRule="CASCADE")]
 		public NHACUNGCAP NHACUNGCAP
 		{
 			get

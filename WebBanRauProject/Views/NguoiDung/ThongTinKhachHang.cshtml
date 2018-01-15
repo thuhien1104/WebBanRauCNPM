@@ -4,26 +4,31 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<h2>ThongTinKhachHang</h2>
-<table>
-    <tr>
-        <td>Tên Khách Hàng: </td>
-        <td>@Model.HOTEN</td>
-    </tr>
-    <tr>
-        <td>Ngày sinh: </td>
-        <td>@Model.NGAYSINH</td>
-    </tr>
-    <tr>
-        <td>Địa chỉ: </td>
-        <td>@Model.DiachiKH</td>
-    </tr>
-    <tr>
-        <td>Số điện thoại: </td>
-        <td>@Model.DIENTHOAIKH</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>@Html.ActionLink("Sửa","SuaThongTinKH", new { id = Model.MAKH })</td>
-    </tr>
-</table>
+
+
+    <table>
+        <div style="height:100px;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:25px;color :white;font-weight:bold; background-color: green;background-size:50px;border-radius:15px;padding :15px">Thông tin khách hàng</span></div>
+        <tr>
+            <td>Tên Khách Hàng: </td>
+            <td>@Model.HOTEN</td>
+        </tr>
+        <tr>
+            <td>Ngày sinh: </td>
+            <td>@Model.NGAYSINH</td>
+        </tr>
+        <tr>
+            <td>Địa chỉ: </td>
+            <td>@Model.DiachiKH</td>
+        </tr>
+        <tr>
+            <td>Số điện thoại: </td>
+            <td>@Model.DIENTHOAIKH</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>@Html.ActionLink("Sửa", "SuaThongTinKH", new { id = Model.MAKH })</td>
+        </tr>
+
+    </table>
+
