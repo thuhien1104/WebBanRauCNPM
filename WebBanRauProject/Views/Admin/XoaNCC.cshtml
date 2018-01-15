@@ -1,0 +1,66 @@
+﻿@model WebBanRauProject.Models.NHACUNGCAP
+
+@{
+    ViewBag.Title = "XoaNCC";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Nhà cung cấp</h2>
+
+<h3>Bạn có muốn xóa nhà cung cấp này?</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên nhà cung cấp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENCC)
+        </dd>
+
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+  Model.HINHANH)" width="120px" />
+        </dd>
+
+
+        <dt>
+           Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt>
+           Điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIENTHOAI)
+        </dd>
+
+        <dt>
+           Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "NCC")
+        </div>
+    }
+</div>

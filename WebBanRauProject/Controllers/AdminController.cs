@@ -433,7 +433,7 @@ namespace WebBanRauProject.Controllers
             return View(mon);
         }
 
-
+        
         public ActionResult SuaMonAn(int id)
         {
             //lay doi tuong
@@ -532,20 +532,144 @@ namespace WebBanRauProject.Controllers
             return View(ad);
         }
 
-        [HttpPost, ActionName("XoaAdmin")]
-        public ActionResult XacNhanXoaAdmin(int id)
+        }
+        public ActionResult NCC()
         {
-            //lấy ra đối tượng cần xóa theo mã:
-            Admin ad = data.Admins.SingleOrDefault(n => n.ID == id);
-            ViewBag.id = ad.ID;
-            if (ad == null)
+            return View(data.NHACUNGCAPs.ToList());
+        }
+
+        public ActionResult ChitietNCC(int id)
+        {
+            NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
+            ViewBag.MANCC = ncc.MANCC;
+            if(ncc==null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            data.Admins.DeleteOnSubmit(ad);
+            return View(ncc);
+
+        }
+
+        [HttpGet]
+        public ActionResult ThemNCC()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemNCC(NHACUNGCAP nc, HttpPostedFileBase fileupload)
+        {
+
+            if (fileupload == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten file
+                    var fileName = Path.GetFileName(fileupload.FileName);
+                    //Luu duong dan File
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    //Kiem tra hinh da ton tai chua\
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                        fileupload.SaveAs(path);//Luu file vao duong dan
+
+                    nc.HINHANH = fileName;
+
+
+
+                    data.NHACUNGCAPs.InsertOnSubmit(nc);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("ThemNCC");
+            }
+            
+            return View();
+            
+            
+        }
+
+        [HttpGet]
+        public ActionResult XoaNCC(int id)
+        {
+            NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
+            ViewBag.MANCC = ncc.MANCC;
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ncc);
+        }
+
+        [HttpPost, ActionName("XoaNCC")]
+        public ActionResult XacnhanxoaNCC(int id)
+        {
+            NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
+            ViewBag.MANCC = ncc.MANCC;
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.NHACUNGCAPs.DeleteOnSubmit(ncc);
             data.SubmitChanges();
-            return RedirectToAction("Admin");
+            return RedirectToAction("NCC");
+        }
+
+        public ActionResult SuaNCC(int id)
+        {
+           
+            NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
+            ViewBag.MANCC = ncc.MANCC;
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+  
+            return View(ncc);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaNCC(NHACUNGCAP ncc,HttpPostedFileBase fileUploat)
+        {
+            if (fileUploat == null)
+            {
+                ViewBag.Thongbao = "Vui lòng chọn ảnh";
+                return View();
+            }
+            else
+            {
+
+                if (ModelState.IsValid)
+                {
+                    var fileName = Path.GetFileName(fileUploat.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    if (System.IO.File.Exists(path))
+                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    else
+                    {
+                        fileUploat.SaveAs(path);
+                    }
+
+                    var a = data.NHACUNGCAPs.Where(p => p.MANCC == ncc.MANCC).FirstOrDefault();
+                    a.TENCC = ncc.TENCC;
+                    a.MOTA = ncc.MOTA;
+                    a.DIACHI = ncc.DIACHI;
+                    a.DIENTHOAI = ncc.DIENTHOAI;
+                    UpdateModel(a);
+                    data.SubmitChanges();
+
+                }
+            }
+            return RedirectToAction("NCC");
         }
 
     }

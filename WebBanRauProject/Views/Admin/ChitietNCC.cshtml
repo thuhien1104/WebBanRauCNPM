@@ -1,0 +1,61 @@
+﻿@model WebBanRauProject.Models.NHACUNGCAP
+
+@{
+    ViewBag.Title = "ChitietNCC";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ChitietNCC</h2>
+
+<div>
+    <h4>NHACUNGCAP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên Nhà Cung Cấp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENCC)
+        </dd>
+
+        <dt>
+           Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+  Model.HINHANH)" width="120px" />
+        </dd>
+
+
+        <dt>
+           Điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIENTHOAI)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaNCC", new { id = Model.MANCC }) |
+    @Html.ActionLink("Trở về", "NCC")
+</p>

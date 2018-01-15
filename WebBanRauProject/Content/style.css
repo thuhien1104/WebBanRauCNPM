@@ -18,7 +18,8 @@ a,.row.articles div,.members-social {
 }
 .nopadding {
   padding-left:0 !important;
-  margin-left:0 !important;
+  margin-left;
+  :0 !important;
 }
 hr {
   width:100%;
@@ -1951,12 +1952,12 @@ ul.pagination-list li a.active,ul.pagination-list li a:hover {
   margin-right:17px;
 }
 .check-name span {
-  background:#382925;
+  background:#3c763d;
   padding:10px 20px;
   border-radius:3px;
   font-size:13px;
   font-weight:bold;
-  color:#e7e5de;
+  color:#fff;
   text-transform:uppercase;
   text-decoration:none;
   margin-bottom:25px;

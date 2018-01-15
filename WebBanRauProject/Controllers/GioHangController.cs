@@ -131,31 +131,50 @@ namespace WebBanRauProject.Controllers
 
         public ActionResult DatHang(FormCollection collection)
         {
+            int keySave = 0;
             DONDATHANG ddh = new DONDATHANG();
             KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
             List<GioHang> listGioHang = LayGioHang();
             ddh.MAKH = kh.MAKH;
             ddh.NGAYDAT = DateTime.Now;
-            var ngaygiao = String.Format("{0:dd/MM/yyyy}", collection["Ngaygiao"]);
-            ddh.NGAYGIAO = DateTime.Parse(ngaygiao);
-            ddh.TINHTRANGGIAOHANG = false;
-            ddh.DATHANHTOAN = false;
-            data.DONDATHANGs.InsertOnSubmit(ddh);
-            data.SubmitChanges();
-            //Them chi tiet don hang
-            foreach (var item in listGioHang)
+            try
             {
-                CHITIETDONHANG ctdh = new CHITIETDONHANG();
-                ctdh.MADH = ddh.MADH;
-                ctdh.MASP = item.iMaSP;
-                ctdh.SOLUONG = item.iSoLuong;
-                ctdh.DONGIA = (decimal)item.dGiaBan;
-                data.CHITIETDONHANGs.InsertOnSubmit(ctdh);
-
+                var ngaygiao = String.Format("{0:dd/MM/yyyy}", collection["Ngaygiao"]);
+                ddh.NGAYGIAO = DateTime.Parse(ngaygiao);
             }
-            data.SubmitChanges();
-            Session["GioHang"] = null;
-            return RedirectToAction("Xacnhandonhang");
+            catch
+            {
+                ViewData["Loi1"] = "Ngày đặt hàng không được để trống";
+                
+                keySave = 1;
+            }
+            if (keySave == 0)
+            {
+                ddh.TINHTRANGGIAOHANG = false;
+                ddh.DATHANHTOAN = false;
+                data.DONDATHANGs.InsertOnSubmit(ddh);
+                data.SubmitChanges();
+                //Them chi tiet don hang
+                foreach (var item in listGioHang)
+                {
+                    CHITIETDONHANG ctdh = new CHITIETDONHANG();
+                    ctdh.MADH = ddh.MADH;
+                    ctdh.MASP = item.iMaSP;
+                    ctdh.SOLUONG = item.iSoLuong;
+                    ctdh.DONGIA = (decimal)item.dGiaBan;
+                    data.CHITIETDONHANGs.InsertOnSubmit(ctdh);
+
+                }
+                data.SubmitChanges();
+                Session["GioHang"] = null;
+                return RedirectToAction("Xacnhandonhang");
+            }
+            else
+            {
+                return this.DatHang();
+            }
+            
+            
         }
 
         public ActionResult Xacnhandonhang()
