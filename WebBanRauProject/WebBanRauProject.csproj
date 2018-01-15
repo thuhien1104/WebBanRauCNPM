@@ -272,6 +272,7 @@
     <Content Include="images\rau_song.jpg" />
     <Content Include="images\rau_xa_lach.jpg" />
     <Content Include="images\son.jpg" />
+    <Content Include="images\thuhien.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />

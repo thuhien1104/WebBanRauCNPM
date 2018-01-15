@@ -25,10 +25,7 @@ namespace WebBanRauProject.Controllers
             
         }
         
-        public ActionResult Rau()
-        {
-            return View(data.SANPHAMs.ToList());
-        }
+       
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());

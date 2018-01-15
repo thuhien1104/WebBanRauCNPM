@@ -17,13 +17,13 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <div class="login-card">
-        <h1>Đăng nhập</h1><br>
+    <div class="login-card" style="color:#0e0707">
+        <h1 style="color: darkblue ; font-size:40px">Đăng nhập</h1><br>
         <form>
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
-            <text style="color:red; text-align:center;font-size:10px">@ViewBag.Thongbao</text>
-            <text style="font-size:10px ; color:red">@ViewData["Loi"]</text>
+            <text style="color:red; text-align:center;font-size:15px">@ViewBag.Thongbao</text>
+            <text style="font-size:15px ; color:red">@ViewData["Loi"]</text>
             <input type="submit" name="login" class="login login-submit" value="Login">
         </form>
     </div>

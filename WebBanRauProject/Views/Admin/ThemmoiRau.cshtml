@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NGAYCAPNHAT,"NGÀY CẬP NHẬT", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="date" name="Ngaycapnhat" />
+                <input type="date" placeholder="now" name="Ngaycapnhat" />
                 @Html.ValidationMessageFor(model => model.NGAYCAPNHAT, "", new { @class = "text-danger" })
             </div>
         </div>

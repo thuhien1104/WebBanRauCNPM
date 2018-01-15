@@ -5,17 +5,47 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>XemDonDatHang</h2>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: 400px;
+    }
 
-<div>
-    <h4>DONDATHANG</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+        }
+</style>
+
+<h2 style="color: brown ; font-size:20px; text-align:center">XEM ĐƠN ĐẶT HÀNG</h2>
+
+
+<table id="table">
+    <tr>
+        <th>
             Thanh toán:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             <text>
 
                 @Html.RadioButton("DATHANHTOAN", "true") Đã thanh toán
@@ -24,48 +54,62 @@
                 @Html.RadioButton("DATHANHTOAN", "false") Chưa thanh toán
 
             </text>
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Tình trạng giao hàng:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             <text>
                 @Html.RadioButton("TINHTRANGGIAOHANG", "true") Đã giao hàng
 
 
                 @Html.RadioButton("TINHTRANGGIAOHANG", "false") Chưa giao hàng
             </text>
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Ngày đặt hàng:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.NGAYDAT)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Ngày giao hàng:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.NGAYGIAO)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Tên khách hàng:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
-        </dd>
+        </td>
+    </tr>
+</table>
 
-    </dl>
-</div>
+
 <p>
-    @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { id = Model.MADH }) |
-    @Html.ActionLink("Cập nhập", "CapNhapDonHang", new { id = Model.MADH }) 
+    <button>
+        @Html.ActionLink("Chi tiết", "ChiTietDonHang", new { id = Model.MADH }) 
+    </button>
+    <button>
+        @Html.ActionLink("Cập nhập", "CapNhapDonHang", new { id = Model.MADH })
+    </button>
+    
 </p>
