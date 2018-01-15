@@ -1,7 +1,11 @@
-﻿
+﻿@model WebBanRauProject.Models.Admin
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Xin chào đây là phần quản trị của Admin</h1>
+<div align="center">
+    <h1 style="color: brown ; font-size:30px">Xin Chào @Model.Hoten</h1>
+    <img src="@Url.Content("~/images/"+Model.Hinhanh)" width="250px" height="300px" style="margin-top:20px">
+</div>

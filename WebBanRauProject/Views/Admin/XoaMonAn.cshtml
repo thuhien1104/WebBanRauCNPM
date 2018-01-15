@@ -5,44 +5,88 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>XoaMonAn</h2>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: 400px;
+    }
 
-<h3>Bạn có muốn xóa món ăn này?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 22px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+        }
+</style>
+
+
+
+<h2 style="color: brown ; font-size:20px; text-align:center">XÓA MÓN ĂN</h2>
+
+
+<table id="table">
+    <tr>
+        <th>
             Tên món ăn:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.TENMONAN)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Mô tả:
-        </dt>
+        </th>
 
-        <dd>
+        <td>
             @Html.DisplayFor(model => model.MOTA)
-        </dd>
-
-        <dt>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
             Hình ảnh:
-        </dt>
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.HINHANH)
-        </dd>
+        <td>
+            <img src="@Url.Content("~/images/"+Model.HINHANH)" width="120px" />
+        </td>
+    </tr>
+    
 
-    </dl>
+</table>
 
-    @using (Html.BeginForm()) {
+<h1 style="color: black ; font-size:20px ;text-align:center">Bạn có muốn xóa món ăn này?</h1>
+
+
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Trở về ", "XoaMonAn","Admin")
+        <div class="form-actions no-color" align="center">
+            <input type="submit" value="XÓA" class="btn btn-default" /> 
+            <button class="btn btn-default">
+                @Html.ActionLink("TRỞ VỀ", "MonAn")
+            </button>
         </div>
     }
-</div>
+

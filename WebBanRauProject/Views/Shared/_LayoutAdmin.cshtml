@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" media="screen">
     <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="~/Content/responsive.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/table-design.css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
@@ -30,14 +31,7 @@
                     <ul>
                         <li><a href="#">Eng</a></li>
                         <li><a href="#">Usd</a></li>
-                        <li>
-                            <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
-                                <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Thêm admin mới","ThemAdmin","Admin")</li>
                     </ul>
                 </div>
             </div>
@@ -62,6 +56,7 @@
                         <li>@Html.ActionLink("Quản lý sản phẩm", "Rau", "Admin")</li>
                         <li>@Html.ActionLink("Các nhà cung cấp", "NCC", "Admin")</li>
                         <li>@Html.ActionLink("Các đơn hàng","DanhSachDonHang","Admin")</li>
+                        <li>@Html.ActionLink("Khách hàng","KhachHang","Admin")</li>
                         <li>@Html.ActionLink("Món ăn","MonAn","Admin")</li>
                     </ul>
                 </div>

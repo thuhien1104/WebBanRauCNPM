@@ -1,14 +1,40 @@
 ﻿@model IEnumerable<WebBanRauProject.Models.DONDATHANG>
-
 @{
     ViewBag.Title = "DanhSachDonHang";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Danh Sách Đơn Hàng</h2>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
 
-<table class="table">
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<table id="table">
     <tr>
         <th>
             Thanh toán
@@ -28,42 +54,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @if(item.DATHANHTOAN == true)
+    @foreach (var item in Model)
             {
-                @ViewBag.DaThanhToan
-            }
-            else
-            {
-                @ViewBag.ChuaThanhToan
-            }
-        </td>
-        <td>
-            @if (item.TINHTRANGGIAOHANG == true)
-            {
-                @ViewBag.DaGiaoHang
-            }
-            else
-            {
-                @ViewBag.ChuaGiaoHang
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGAYDAT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGAYGIAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
-        </td>
-        <td>
-            @Html.ActionLink("Cập nhập", "SuaDonHang", new { id=item.MADH }) |
-            @Html.ActionLink("Xem", "XemDonDatHang", new { id=item.MADH }) 
-        </td>
-    </tr>
-}
+        <tr>
+            <td>
+                @if (item.DATHANHTOAN == true)
+                {
+                    @ViewBag.DaThanhToan
+                }
+                else
+                {
+                    @ViewBag.ChuaThanhToan
+                }
+            </td>
+            <td>
+                @if (item.TINHTRANGGIAOHANG == true)
+                {
+                    @ViewBag.DaGiaoHang
+                }
+                else
+                {
+                    @ViewBag.ChuaGiaoHang
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYDAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYGIAO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhập", "SuaDonHang", new { id = item.MADH }) |
+                @Html.ActionLink("Xem", "ChiTietDonHang", new { id = item.MADH })
+            </td>
+        </tr>
+    }
 
 </table>
