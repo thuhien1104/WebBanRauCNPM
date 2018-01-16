@@ -266,6 +266,16 @@
     <Content Include="images\nam_meo.jpg" />
     <Content Include="images\nam_rom.jpg" />
     <Content Include="images\nam_tuyet.jpg" />
+    <Content Include="images\ncc10.jpg" />
+    <Content Include="images\ncc2.jpg" />
+    <Content Include="images\ncc3.jpg" />
+    <Content Include="images\ncc4.jpg" />
+    <Content Include="images\ncc5.jpg" />
+    <Content Include="images\ncc6.jpg" />
+    <Content Include="images\ncc7.jpg" />
+    <Content Include="images\ncc8.jpg" />
+    <Content Include="images\ncc9.jpg" />
+    <Content Include="images\ncc_dalat.jpg" />
     <Content Include="images\rau_cai_ngong.jpg" />
     <Content Include="images\rau_cai_ngot.jpg" />
     <Content Include="images\rau_cai_thia.jpg" />

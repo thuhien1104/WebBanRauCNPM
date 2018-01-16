@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WebBanRauProject.Models.NHACUNGCAP>
+﻿
+ @using WebBanRauProject.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<NHACUNGCAP>
+
 
 @{
     ViewBag.Title = "NhaCC";
@@ -37,4 +41,17 @@
     <!--end-articles-->
         }
     </div>
+</div>
+<div style="text-align:center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang">
+
+        @Html.PagedListPager(Model, page => Url.Action("NhaCC", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
 </div>

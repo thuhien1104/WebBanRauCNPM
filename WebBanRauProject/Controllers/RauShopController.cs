@@ -80,10 +80,12 @@ namespace WebBanRauProject.Controllers
             return View();
 
         }
-        public ActionResult NhaCC()
+        public ActionResult NhaCC(int ? page)
         {
             var ncc = from sp in data.NHACUNGCAPs select sp; //sp
-            return View(ncc);
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
+            return View(ncc.ToPagedList(pageNum, pageSize));
         }
         public ActionResult CTNhaCC(int id)
         {
