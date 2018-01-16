@@ -172,12 +172,14 @@
                 <div class="col-md-6 language">
                     <ul>
                         <li>@Html.Action("DangNhapPartial", "NguoiDung")</li>
+                       
+
                         <li>
                             <a data-toggle="dropdown" class="dropdown-toggle">Tài khoản</a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("DangNhap" , "NguoiDung")">Đăng nhập</a></li>
-                                <li><a href="@Url.Action("DangKy" , "NguoiDung")">Đăng ký</a></li>
+                                <li><a href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a></li>
+                                <li><a href="@Url.Action("DangKy", "NguoiDung")">Đăng ký</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -205,7 +207,7 @@
 
 
              
-                        <li><a href="@Url.Action("GioHang","GioHang")">Giỏ hàng</a></li>
+                        <li><a href="@Url.Action("GioHang", "GioHang")">Giỏ hàng</a></li>
                         <li><a href="">Thanh toán</a></li>
                         <li><a href="@Url.Action("ThongTin", "RauShop")">Thông tin cửa hàng</a></li>
                         <li><a href="@Url.Action("LienHe", "RauShop")">Liên hệ</a></li>
@@ -216,11 +218,40 @@
             </div>
             <div class="page-title">
                 <div class="container">
+
+
+
+
+                   
+                   
+                   
+
+
+
                     <div class="row">
+
                         <div class="col-md-10 produti">
+
+
+                            <div class="col-md-4 produti">
+                            @using (Html.BeginForm("NguoiDung", "TimKiem", FormMethod.Get, new { @class = "navbar-form navbar-right", role = "search", id = "search-form" }))
+                            {
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm sách" name="SearchTerm" value="@ViewBag.SearchTerm" id="search-box">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default hidden-xs"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </div>
+                            }
+                                </div>
+
+
+
+
                         </div>
-                        <div class="col-md-2 cart">
+                        <div class="col-md-2 cart" style="margin-top:5px">
                             <h4>@Html.Action("GioHangPartial", "GioHang")</h4>
+                           
 
                         </div>
                     </div>

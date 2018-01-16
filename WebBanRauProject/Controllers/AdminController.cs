@@ -22,13 +22,9 @@ namespace WebBanRauProject.Controllers
             }
             else
                 return RedirectToAction("Login");
-            
+
         }
         
-        public ActionResult Rau()
-        {
-            return View(data.SANPHAMs.ToList());
-        }
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
@@ -283,7 +279,7 @@ namespace WebBanRauProject.Controllers
             ViewBag.ChuaThanhToan = "Chưa thanh toán";
             ViewBag.DaGiaoHang = "Đã giao hàng";
             ViewBag.ChuaGiaoHang = "Chưa giao hàng";
-            List<DONDATHANG> lstDonHang = data.DONDATHANGs.OrderByDescending(d=>d.NGAYDAT).ToList();
+            List<DONDATHANG> lstDonHang = data.DONDATHANGs.OrderByDescending(d => d.NGAYDAT).ToList();
             return View(lstDonHang);
         }
         public ActionResult ChiTietDonHang(int id)
@@ -312,7 +308,7 @@ namespace WebBanRauProject.Controllers
                 {
                     var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
                     sp.SOLUONGTON -= item.SOLUONG;
-                    UpdateModel(sp);                    
+                    UpdateModel(sp);
                     data.SubmitChanges();
                 }
                 var donhang = data.DONDATHANGs.Where(dh => dh.MADH == id).First();
@@ -436,7 +432,7 @@ namespace WebBanRauProject.Controllers
             return View(mon);
         }
 
-        
+
         public ActionResult SuaMonAn(int id)
         {
             //lay doi tuong
@@ -521,7 +517,7 @@ namespace WebBanRauProject.Controllers
             }
             return View();
         }
-        
+
         public ActionResult XoaAdmin(int id)
         {
             //lấy đối tượng :
@@ -534,8 +530,6 @@ namespace WebBanRauProject.Controllers
             }
             return View(ad);
         }
-
-        }
         public ActionResult NCC()
         {
             return View(data.NHACUNGCAPs.ToList());
@@ -545,7 +539,7 @@ namespace WebBanRauProject.Controllers
         {
             NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
             ViewBag.MANCC = ncc.MANCC;
-            if(ncc==null)
+            if (ncc == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -592,10 +586,10 @@ namespace WebBanRauProject.Controllers
                 }
                 return RedirectToAction("ThemNCC");
             }
-            
+
             return View();
-            
-            
+
+
         }
 
         [HttpGet]
@@ -628,7 +622,7 @@ namespace WebBanRauProject.Controllers
 
         public ActionResult SuaNCC(int id)
         {
-           
+
             NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
             ViewBag.MANCC = ncc.MANCC;
             if (ncc == null)
@@ -636,12 +630,12 @@ namespace WebBanRauProject.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-  
+
             return View(ncc);
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult SuaNCC(NHACUNGCAP ncc,HttpPostedFileBase fileUploat)
+        public ActionResult SuaNCC(NHACUNGCAP ncc, HttpPostedFileBase fileUploat)
         {
             if (fileUploat == null)
             {
@@ -667,6 +661,7 @@ namespace WebBanRauProject.Controllers
                     a.MOTA = ncc.MOTA;
                     a.DIACHI = ncc.DIACHI;
                     a.DIENTHOAI = ncc.DIENTHOAI;
+                    a.HINHANH = ncc.HINHANH;
                     UpdateModel(a);
                     data.SubmitChanges();
 

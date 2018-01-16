@@ -26,15 +26,21 @@ namespace WebBanRauProject.Controllers
         }
       
         // GET: RauShop
-        public ActionResult Index(int ? page)
+       
+       
+        public ActionResult Spbanchay()
         {
             //Lay 4 Rau moi nhap
-            var raumoi = LaySanPhamMoiNhap(4);
-            int pageSize = 4;
-            int pageNum = (page ?? 1);
-           
-            return View(raumoi.ToPagedList(pageNum, pageSize));
+            var raumoi = LaySanPhamBanChay(4);
+            return PartialView(raumoi);
         }
+        public ActionResult Index()
+        {
+            var raumoi = LaySanPhamMoiNhap(4);
+
+            return View(raumoi);
+        }
+
         //Dua loai rau vao menu list
         public ActionResult LoaiSanPham(int ? page)
         {
@@ -80,6 +86,7 @@ namespace WebBanRauProject.Controllers
             var ncc = from sp in data.NHACUNGCAPs select sp; //sp
             return View(ncc);
         }
+        
        
 
 

@@ -33,6 +33,9 @@ namespace WebBanRauProject.Models
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
+    partial void InsertTEMP(TEMP instance);
+    partial void UpdateTEMP(TEMP instance);
+    partial void DeleteTEMP(TEMP instance);
     partial void InsertCHITIETDONHANG(CHITIETDONHANG instance);
     partial void UpdateCHITIETDONHANG(CHITIETDONHANG instance);
     partial void DeleteCHITIETDONHANG(CHITIETDONHANG instance);
@@ -86,19 +89,19 @@ namespace WebBanRauProject.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<SPBanChay> SPBanChays
-		{
-			get
-			{
-				return this.GetTable<SPBanChay>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Admin> Admins
 		{
 			get
 			{
 				return this.GetTable<Admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TEMP> TEMPs
+		{
+			get
+			{
+				return this.GetTable<TEMP>();
 			}
 		}
 		
@@ -165,139 +168,12 @@ namespace WebBanRauProject.Models
 				return this.GetTable<SANPHAM>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SPBanChay")]
-	public partial class SPBanChay
-	{
 		
-		private int _MASP;
-		
-		private string _TENSP;
-		
-		private System.Nullable<decimal> _GIABAN;
-		
-		private string _ANHSP;
-		
-		private System.Nullable<System.DateTime> _NGAYCAPNHAT;
-		
-		private System.Nullable<double> _SOLUONGTON;
-		
-		private System.Nullable<double> _SOLUOMHMUA;
-		
-		public SPBanChay()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Int NOT NULL")]
-		public int MASP
+		public System.Data.Linq.Table<SPBanChay> SPBanChays
 		{
 			get
 			{
-				return this._MASP;
-			}
-			set
-			{
-				if ((this._MASP != value))
-				{
-					this._MASP = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENSP", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string TENSP
-		{
-			get
-			{
-				return this._TENSP;
-			}
-			set
-			{
-				if ((this._TENSP != value))
-				{
-					this._TENSP = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABAN", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> GIABAN
-		{
-			get
-			{
-				return this._GIABAN;
-			}
-			set
-			{
-				if ((this._GIABAN != value))
-				{
-					this._GIABAN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANHSP", DbType="VarChar(30)")]
-		public string ANHSP
-		{
-			get
-			{
-				return this._ANHSP;
-			}
-			set
-			{
-				if ((this._ANHSP != value))
-				{
-					this._ANHSP = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAPNHAT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NGAYCAPNHAT
-		{
-			get
-			{
-				return this._NGAYCAPNHAT;
-			}
-			set
-			{
-				if ((this._NGAYCAPNHAT != value))
-				{
-					this._NGAYCAPNHAT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONGTON", DbType="Float")]
-		public System.Nullable<double> SOLUONGTON
-		{
-			get
-			{
-				return this._SOLUONGTON;
-			}
-			set
-			{
-				if ((this._SOLUONGTON != value))
-				{
-					this._SOLUONGTON = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUOMHMUA", DbType="Float")]
-		public System.Nullable<double> SOLUOMHMUA
-		{
-			get
-			{
-				return this._SOLUOMHMUA;
-			}
-			set
-			{
-				if ((this._SOLUOMHMUA != value))
-				{
-					this._SOLUOMHMUA = value;
-				}
+				return this.GetTable<SPBanChay>();
 			}
 		}
 	}
@@ -435,6 +311,140 @@ namespace WebBanRauProject.Models
 					this._Hinhanh = value;
 					this.SendPropertyChanged("Hinhanh");
 					this.OnHinhanhChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TEMP")]
+	public partial class TEMP : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _MASP;
+		
+		private System.Nullable<int> _MANCC;
+		
+		private System.Nullable<int> _MALOAI;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnMASPChanging(System.Nullable<int> value);
+    partial void OnMASPChanged();
+    partial void OnMANCCChanging(System.Nullable<int> value);
+    partial void OnMANCCChanged();
+    partial void OnMALOAIChanging(System.Nullable<int> value);
+    partial void OnMALOAIChanged();
+    #endregion
+		
+		public TEMP()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Int")]
+		public System.Nullable<int> MASP
+		{
+			get
+			{
+				return this._MASP;
+			}
+			set
+			{
+				if ((this._MASP != value))
+				{
+					this.OnMASPChanging(value);
+					this.SendPropertyChanging();
+					this._MASP = value;
+					this.SendPropertyChanged("MASP");
+					this.OnMASPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANCC", DbType="Int")]
+		public System.Nullable<int> MANCC
+		{
+			get
+			{
+				return this._MANCC;
+			}
+			set
+			{
+				if ((this._MANCC != value))
+				{
+					this.OnMANCCChanging(value);
+					this.SendPropertyChanging();
+					this._MANCC = value;
+					this.SendPropertyChanged("MANCC");
+					this.OnMANCCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALOAI", DbType="Int")]
+		public System.Nullable<int> MALOAI
+		{
+			get
+			{
+				return this._MALOAI;
+			}
+			set
+			{
+				if ((this._MALOAI != value))
+				{
+					this.OnMALOAIChanging(value);
+					this.SendPropertyChanging();
+					this._MALOAI = value;
+					this.SendPropertyChanged("MALOAI");
+					this.OnMALOAIChanged();
 				}
 			}
 		}
@@ -2061,6 +2071,141 @@ namespace WebBanRauProject.Models
 		{
 			this.SendPropertyChanging();
 			entity.SANPHAM = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SPBanChay")]
+	public partial class SPBanChay
+	{
+		
+		private int _MASP;
+		
+		private string _TENSP;
+		
+		private System.Nullable<decimal> _GIABAN;
+		
+		private string _ANHSP;
+		
+		private System.Nullable<System.DateTime> _NGAYCAPNHAT;
+		
+		private System.Nullable<double> _SOLUONGTON;
+		
+		private System.Nullable<double> _SOLUOMHMUA;
+		
+		public SPBanChay()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Int NOT NULL")]
+		public int MASP
+		{
+			get
+			{
+				return this._MASP;
+			}
+			set
+			{
+				if ((this._MASP != value))
+				{
+					this._MASP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENSP", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string TENSP
+		{
+			get
+			{
+				return this._TENSP;
+			}
+			set
+			{
+				if ((this._TENSP != value))
+				{
+					this._TENSP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABAN", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> GIABAN
+		{
+			get
+			{
+				return this._GIABAN;
+			}
+			set
+			{
+				if ((this._GIABAN != value))
+				{
+					this._GIABAN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANHSP", DbType="VarChar(30)")]
+		public string ANHSP
+		{
+			get
+			{
+				return this._ANHSP;
+			}
+			set
+			{
+				if ((this._ANHSP != value))
+				{
+					this._ANHSP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAPNHAT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYCAPNHAT
+		{
+			get
+			{
+				return this._NGAYCAPNHAT;
+			}
+			set
+			{
+				if ((this._NGAYCAPNHAT != value))
+				{
+					this._NGAYCAPNHAT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONGTON", DbType="Float")]
+		public System.Nullable<double> SOLUONGTON
+		{
+			get
+			{
+				return this._SOLUONGTON;
+			}
+			set
+			{
+				if ((this._SOLUONGTON != value))
+				{
+					this._SOLUONGTON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUOMHMUA", DbType="Float")]
+		public System.Nullable<double> SOLUOMHMUA
+		{
+			get
+			{
+				return this._SOLUOMHMUA;
+			}
+			set
+			{
+				if ((this._SOLUOMHMUA != value))
+				{
+					this._SOLUOMHMUA = value;
+				}
+			}
 		}
 	}
 }

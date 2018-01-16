@@ -395,14 +395,13 @@
     <Content Include="Views\Admin\XoaNCC.cshtml" />
     <Content Include="Views\Admin\SuaNCC.cshtml" />
     <Content Include="Views\RauShop\NhaCC.cshtml" />
+    <Content Include="Views\RauShop\Spbanchay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Content\dangnhap\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="fonts\webfonts\" />
-    <Folder Include="images\" />
     <Folder Include="Scripts\images\" />
     <Folder Include="Scripts\js\" />
   </ItemGroup>
