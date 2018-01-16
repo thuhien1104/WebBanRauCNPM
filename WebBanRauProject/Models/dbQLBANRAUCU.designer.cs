@@ -60,7 +60,7 @@ namespace WebBanRauProject.Models
     #endregion
 		
 		public dbQLBANRAUCUDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString3"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -150,6 +150,14 @@ namespace WebBanRauProject.Models
 			get
 			{
 				return this.GetTable<QuanLyGoiYMonAn>();
+			}
+		}
+		
+		public System.Data.Linq.Table<QuanLyTinTuc> QuanLyTinTucs
+		{
+			get
+			{
+				return this.GetTable<QuanLyTinTuc>();
 			}
 		}
 		
@@ -1341,7 +1349,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TENCC
 		{
 			get
@@ -1361,7 +1369,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(200)")]
 		public string DIACHI
 		{
 			get
@@ -1617,6 +1625,87 @@ namespace WebBanRauProject.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyTinTuc")]
+	public partial class QuanLyTinTuc
+	{
+		
+		private int _MATIN;
+		
+		private string _TIEUDE;
+		
+		private string _NOIDUNG;
+		
+		private System.Nullable<System.DateTime> _NGAYDANGTIN;
+		
+		public QuanLyTinTuc()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATIN", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MATIN
+		{
+			get
+			{
+				return this._MATIN;
+			}
+			set
+			{
+				if ((this._MATIN != value))
+				{
+					this._MATIN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEUDE", DbType="NVarChar(50)")]
+		public string TIEUDE
+		{
+			get
+			{
+				return this._TIEUDE;
+			}
+			set
+			{
+				if ((this._TIEUDE != value))
+				{
+					this._TIEUDE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOIDUNG", DbType="NVarChar(MAX)")]
+		public string NOIDUNG
+		{
+			get
+			{
+				return this._NOIDUNG;
+			}
+			set
+			{
+				if ((this._NOIDUNG != value))
+				{
+					this._NOIDUNG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYDANGTIN", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYDANGTIN
+		{
+			get
+			{
+				return this._NGAYDANGTIN;
+			}
+			set
+			{
+				if ((this._NGAYDANGTIN != value))
+				{
+					this._NGAYDANGTIN = value;
+				}
 			}
 		}
 	}
@@ -1918,7 +2007,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true)]
 		public NHACUNGCAP NHACUNGCAP
 		{
 			get

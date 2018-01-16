@@ -4,35 +4,65 @@
     ViewBag.Title = "SuaThongTinKH";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
 
-<h2>SuaThongTinKH</h2>
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #20620d;
+            color: white;
+        }
+</style>
+<div style="height:100px;text-align:center;line-height:2; margin-top:20px;"><span style="text-align: center;font-size:25px;color :white;font-weight:bold; background-color: green;background-size:50px;border-radius:15px;padding :15px">Sửa thông tin khách hàng</span></div>
 
 @using (Html.BeginForm())
 {
-<table>
-    <tr>
-        <td>Tên Khách Hàng: </td>
-        <td>@Html.TextBoxFor(s => s.HOTEN)</td>
-    </tr>
-    <tr>
-        <td>Ngày sinh: </td>
-        <td>@Html.TextBoxFor(s => s.NGAYSINH)</td>
-    </tr>
-    <tr>
-        <td>Địa chỉ: </td>
-        <td>@Html.TextBoxFor(s => s.DiachiKH)</td>
-    </tr>
-    <tr>
-        <td>Số điện thoại: </td>
-        <td>@Html.TextBoxFor(s => s.DIENTHOAIKH)</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><input type="submit" name="update" value="Cập nhập" /></td>
-    </tr>
-</table>
+    <div align="center" style="">
+        <table id="table">
+            <tr>
+                <td>Tên Khách Hàng: </td>
+                <td>@Html.TextBoxFor(s => s.HOTEN)</td>
+            </tr>
+            <tr>
+                <td>Ngày sinh: </td>
+                <td>@Html.TextBoxFor(s => s.NGAYSINH)</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td>@Html.TextBoxFor(s => s.DiachiKH)</td>
+            </tr>
+            <tr>
+                <td>Số điện thoại: </td>
+                <td>@Html.TextBoxFor(s => s.DIENTHOAIKH)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="update" value="Cập nhập" /></td>
+            </tr>
+        </table>
+    </div>
 }
 
-<div>
-    @Html.ActionLink("Trờ về", "ThongTinKhachHang")
+<div style="background-color:green;border-radius:10px;padding:10px;width:10%;font-weight:bold;text-align:center">
+    @Html.ActionLink("Trở về", "ThongTinKhachHang")
 </div>
