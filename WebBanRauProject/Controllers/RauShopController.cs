@@ -85,8 +85,24 @@ namespace WebBanRauProject.Controllers
             var ncc = from sp in data.NHACUNGCAPs select sp; //sp
             return View(ncc);
         }
-        
-       
+        public ActionResult CTNhaCC(int id)
+        {
+            var ncc = from m in data.NHACUNGCAPs where m.MANCC == id select m;
+            return View(ncc.Single());
+        }
+        //-------------------------------------------------------
+        public ActionResult MonAn(int ? page)
+        {
+            var mon = from m in data.QuanLyGoiYMonAns select m;
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
+            return View(mon.ToPagedList(pageNum, pageSize));
+        }
+        public ActionResult CTMonan(int id)
+        {
+            var mon = from m in data.QuanLyGoiYMonAns where m.MASO == id select m;
+            return View(mon.Single());
+        }
 
 
 

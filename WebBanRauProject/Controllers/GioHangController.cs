@@ -103,7 +103,14 @@ namespace WebBanRauProject.Controllers
             GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSP == iMaSP);
             if (sp != null)
             {
-                sp.iSoLuong = double.Parse(f["txtSoLuong"].ToString());
+                try
+                {
+                    sp.iSoLuong = double.Parse(f["txtSoLuong"].ToString());
+                }
+                catch(Exception e)
+                {
+                    return RedirectToAction("GioHang");
+                }
             }
             return RedirectToAction("GioHang");
         }

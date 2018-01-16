@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "CTMonan";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="container">
+    <center>
+        <div style="height:100px; margin-top:60px;"><span style="text-align: center;font-size:25px;font-weight:bold;color:white; background-color: green;background-size:50px;border-radius:15px;padding :15px">CHI TIẾT MÓN ĂN</span></div>
+    </center>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div style="line-height:2;font-size:18px">
+                <div>
+                    <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+                        <img src="~/images/@Model.HINHANH" width="100%" />
+                    </div>
+                    <div style="width:60%; float:left;background-color:lightgreen;border-radius:30px;padding:30px;background-size:cover;padding-left:100px">
+                        <h4 style="font-weight:bold;font-size:25px; color:red">Tên món ăn: @Model.TENMONAN</h4>
+                        <p style="text-align:justify"><span style="font-weight:bold">Mô tả:</span>@Model.MOTA</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

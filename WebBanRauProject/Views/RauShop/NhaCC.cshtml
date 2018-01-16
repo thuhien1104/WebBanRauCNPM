@@ -16,7 +16,7 @@
 
 
             <div class="col-md-3 col-sm-6">
-                <a href="@Url.Action("NhaCC", "RauShop", new { id = item.MANCC })">
+                <a href="@Url.Action("CTNhaCC", "RauShop", new { id = item.MANCC })">
                     <img alt="@item.HINHANH" src="~/images/@item.HINHANH" />
                 </a>
                 <div class="text">
@@ -24,13 +24,7 @@
                         <div style="text-align:center;font-size:18px;font-weight:bold;text-decoration-color:green">@item.TENCC</div>
                    
                     <p>
-                        <div style="font-size:15px; font-weight:600">@item.DIACHI</div>
-                    </p>
-                    <p>
                         <div style="font-size:15px; font-weight:600">@item.DIENTHOAI</div>
-                    </p>
-                    <p>
-                        <div style="font-size:15px; font-weight:600">@item.MOTA</div>
                     </p>
                     </div>
                     </div>

@@ -53,19 +53,28 @@ namespace WebBanRauProject.Controllers
             }
             else if (String.IsNullOrEmpty(dienthoai))
             {
-                ViewData["Loi5"] = "Vui lòng nhập số điện thoại";
+                ViewData["Loi6"] = "Vui lòng nhập số điện thoại";
             }
             else
             {
-                kh.HOTEN = hoten;
-                kh.TAIKHOAN = tendn;
-                kh.MATKHAU = matkhau;
-                kh.DiachiKH = diachi;
-                kh.NGAYSINH = DateTime.Parse(ngaysinh);
-                kh.DIENTHOAIKH = dienthoai;
-                data.KHACHHANGs.InsertOnSubmit(kh);
-                data.SubmitChanges();
-                return RedirectToAction("DangNhap");
+                KHACHHANG temp = data.KHACHHANGs.First(k => k.TAIKHOAN == tendn);
+                if(temp != null)
+                {
+                    ViewData["Loi7"] = "Tên đăng nhập đã tồn tại";
+                }
+                else
+                {
+                    kh.HOTEN = hoten;
+                    kh.TAIKHOAN = tendn;
+                    kh.MATKHAU = matkhau;
+                    kh.DiachiKH = diachi;
+                    kh.NGAYSINH = DateTime.Parse(ngaysinh);
+                    kh.DIENTHOAIKH = dienthoai;
+                    data.KHACHHANGs.InsertOnSubmit(kh);
+                    data.SubmitChanges();
+                    return RedirectToAction("DangNhap");
+                }
+                
             }
 
             return this.DangKy() ;

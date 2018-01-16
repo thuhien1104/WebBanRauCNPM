@@ -1,0 +1,48 @@
+﻿@using WebBanRauProject.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<QuanLyGoiYMonAn>
+@{
+    ViewBag.Title = "MonAn";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container">
+
+    <div class="row articles col-md-12 col-sm-12" style="height:100px;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:20px;color:black; background-color: white;background-size:50px;border-radius:15px;padding :15px">Tất cả món ăn</span></div>
+
+    <div class="row articles">
+        @foreach (var monan in Model)
+        {
+    <!--articles-->
+
+
+            <div class="col-md-3 col-sm-6">
+                <a href="@Url.Action("CTMonan", "RauShop", new { id = monan.MASO })">
+                    <img alt="@monan.TENMONAN" src="~/images/@monan.HINHANH" />
+                </a>
+                <div class="text">
+                    <a href="@Url.Action("CTMonan" , "RauShop" , new { id = monan.MASO})">
+                        <div style="text-align:center;font-size:18px;font-style:normal;font-weight:bold;text-decoration-line:underline;text-decoration-color:green;font-synthesis:weight">@monan.TENMONAN</div>
+                    </a>
+                </div>
+            </div>
+
+
+
+    <!--end-articles-->
+        }
+    </div>
+</div>
+<div style="text-align:center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang">
+
+        @Html.PagedListPager(Model, page => Url.Action("ShowAll", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</div>

@@ -398,6 +398,9 @@
     <Content Include="Views\RauShop\NhaCC.cshtml" />
     <Content Include="Views\Admin\DoiMatKhau.cshtml" />
     <Content Include="Views\RauShop\Spbanchay.cshtml" />
+    <Content Include="Views\RauShop\MonAn.cshtml" />
+    <Content Include="Views\RauShop\CTMonan.cshtml" />
+    <Content Include="Views\RauShop\CTNhaCC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

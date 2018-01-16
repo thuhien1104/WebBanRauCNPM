@@ -4,6 +4,17 @@
     ViewBag.Title = "GioHang";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
+<script language='javascript'>
+ <!--
+ function isNumberKey(evt)
+ {
+ var charCode = (evt.which) ? evt.which : event.keyCode
+ if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+ return false;
+ return true;
+ }
+ //-->
+</script>
 <h2 style="height:50px;font-weight:bold;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:20px;color:white; background-color: green;background-size:50px;border-radius:15px;padding :15px">Thông tin sản phẩm</h2>
 <div class="container">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -49,7 +60,8 @@
                                     @String.Format("{0:0,0}", item.dGiaBan)
                                 </td>
                                 <td>
-                                    <input type="text" name="txtSoLuong" value="@item.iSoLuong" />
+                                    <input type="text" name="txtSoLuong" onKeyPress="return isNumberKey(event)" value="@item.iSoLuong" />
+                                    
                                 </td>
                                 <td class="cart-total">
                                     @String.Format("{0:0,0}", item.dThanhTien)

@@ -17,7 +17,9 @@
 
 
             <div class="col-md-3 col-sm-6">
-                <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
+                <a href="@Url.Action("Details", "RauShop", new { id = sanpham.MASP })">
+                    <img alt="@sanpham.TENSP" src="~/images/@sanpham.ANHSP" />
+                </a>
                 <div class="text">
                     <a href="@Url.Action("Details" , "RauShop" , new { id = sanpham.MALOAI})">
                         <div style="text-align:center;font-size:18px;font-style:normal;font-weight:bold;text-decoration-line:underline;text-decoration-color:green;font-synthesis:weight">@sanpham.TENSP</div>

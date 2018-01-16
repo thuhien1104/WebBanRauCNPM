@@ -3,7 +3,17 @@
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script language='javascript'>
+ <!--
+ function isNumberKey(evt)
+ {
+ var charCode = (evt.which) ? evt.which : event.keyCode
+ if (charCode > 31 && (charCode < 48 || charCode > 57))
+ return false;
+ return true;
+ }
+ //-->
+</script>
 
    <div style="height:100px;font-weight:bold;text-align:center; margin-top:60px;"><span style="text-align: center;font-size:25px;color:white; background-color: green;background-size:50px;border-radius:15px;padding :15px">Đăng kí</span></div>
 
@@ -70,11 +80,11 @@
                         <div class="col-sm-12" style="height:20px"></div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input id="Dienthoai" name="Dienthoai" type="number" class="form-control" placeholder="Điện thoại">
+                                <input id="Dienthoai" name="Dienthoai" onKeyPress="return isNumberKey(event)" type="number" class="form-control" placeholder="Điện thoại">
                                 @ViewData["Loi6"]
-
                             </div>
                         </div>
+                        @ViewData["Loi7"]
 
                     </form>
                     <a href="#" style="color:darkblue">Quên mật khẩu?</a>
