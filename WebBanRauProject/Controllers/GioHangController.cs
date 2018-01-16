@@ -7,6 +7,7 @@ using WebBanRauProject.Models;
 
 namespace WebBanRauProject.Controllers
 {
+   
     public class GioHangController : Controller
     {
         dbQLBANRAUCUDataContext data = new dbQLBANRAUCUDataContext();
@@ -109,6 +110,8 @@ namespace WebBanRauProject.Controllers
         }
 
         //Xu ly button Dat hang
+
+       
         [HttpGet]
         public ActionResult DatHang()
         {
