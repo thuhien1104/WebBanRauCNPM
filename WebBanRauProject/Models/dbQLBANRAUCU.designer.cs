@@ -60,7 +60,7 @@ namespace WebBanRauProject.Models
     #endregion
 		
 		public dbQLBANRAUCUDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString3"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -94,6 +94,14 @@ namespace WebBanRauProject.Models
 			get
 			{
 				return this.GetTable<Admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TEMP> TEMPs
+		{
+			get
+			{
+				return this.GetTable<TEMP>();
 			}
 		}
 		
@@ -150,14 +158,6 @@ namespace WebBanRauProject.Models
 			get
 			{
 				return this.GetTable<QuanLyGoiYMonAn>();
-			}
-		}
-		
-		public System.Data.Linq.Table<QuanLyTinTuc> QuanLyTinTucs
-		{
-			get
-			{
-				return this.GetTable<QuanLyTinTuc>();
 			}
 		}
 		
@@ -311,6 +311,140 @@ namespace WebBanRauProject.Models
 					this._Hinhanh = value;
 					this.SendPropertyChanged("Hinhanh");
 					this.OnHinhanhChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TEMP")]
+	public partial class TEMP : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _MASP;
+		
+		private System.Nullable<int> _MANCC;
+		
+		private System.Nullable<int> _MALOAI;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnMASPChanging(System.Nullable<int> value);
+    partial void OnMASPChanged();
+    partial void OnMANCCChanging(System.Nullable<int> value);
+    partial void OnMANCCChanged();
+    partial void OnMALOAIChanging(System.Nullable<int> value);
+    partial void OnMALOAIChanged();
+    #endregion
+		
+		public TEMP()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Int")]
+		public System.Nullable<int> MASP
+		{
+			get
+			{
+				return this._MASP;
+			}
+			set
+			{
+				if ((this._MASP != value))
+				{
+					this.OnMASPChanging(value);
+					this.SendPropertyChanging();
+					this._MASP = value;
+					this.SendPropertyChanged("MASP");
+					this.OnMASPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MANCC", DbType="Int")]
+		public System.Nullable<int> MANCC
+		{
+			get
+			{
+				return this._MANCC;
+			}
+			set
+			{
+				if ((this._MANCC != value))
+				{
+					this.OnMANCCChanging(value);
+					this.SendPropertyChanging();
+					this._MANCC = value;
+					this.SendPropertyChanged("MANCC");
+					this.OnMANCCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MALOAI", DbType="Int")]
+		public System.Nullable<int> MALOAI
+		{
+			get
+			{
+				return this._MALOAI;
+			}
+			set
+			{
+				if ((this._MALOAI != value))
+				{
+					this.OnMALOAIChanging(value);
+					this.SendPropertyChanging();
+					this._MALOAI = value;
+					this.SendPropertyChanged("MALOAI");
+					this.OnMALOAIChanged();
 				}
 			}
 		}
@@ -1349,7 +1483,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENCC", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string TENCC
 		{
 			get
@@ -1369,7 +1503,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DIACHI", DbType="NVarChar(MAX)")]
 		public string DIACHI
 		{
 			get
@@ -1625,87 +1759,6 @@ namespace WebBanRauProject.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyTinTuc")]
-	public partial class QuanLyTinTuc
-	{
-		
-		private int _MATIN;
-		
-		private string _TIEUDE;
-		
-		private string _NOIDUNG;
-		
-		private System.Nullable<System.DateTime> _NGAYDANGTIN;
-		
-		public QuanLyTinTuc()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATIN", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int MATIN
-		{
-			get
-			{
-				return this._MATIN;
-			}
-			set
-			{
-				if ((this._MATIN != value))
-				{
-					this._MATIN = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIEUDE", DbType="NVarChar(50)")]
-		public string TIEUDE
-		{
-			get
-			{
-				return this._TIEUDE;
-			}
-			set
-			{
-				if ((this._TIEUDE != value))
-				{
-					this._TIEUDE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOIDUNG", DbType="NVarChar(MAX)")]
-		public string NOIDUNG
-		{
-			get
-			{
-				return this._NOIDUNG;
-			}
-			set
-			{
-				if ((this._NOIDUNG != value))
-				{
-					this._NOIDUNG = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYDANGTIN", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NGAYDANGTIN
-		{
-			get
-			{
-				return this._NGAYDANGTIN;
-			}
-			set
-			{
-				if ((this._NGAYDANGTIN != value))
-				{
-					this._NGAYDANGTIN = value;
-				}
 			}
 		}
 	}
@@ -2007,7 +2060,7 @@ namespace WebBanRauProject.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHACUNGCAP_SANPHAM", Storage="_NHACUNGCAP", ThisKey="MANCC", OtherKey="MANCC", IsForeignKey=true, DeleteRule="CASCADE")]
 		public NHACUNGCAP NHACUNGCAP
 		{
 			get

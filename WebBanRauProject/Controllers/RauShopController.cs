@@ -67,9 +67,8 @@ namespace WebBanRauProject.Controllers
         public ActionResult ShowAll(int ? page)
         {
             var rau = from sp in data.SANPHAMs select sp;
-            int pageSize = 4;
+            int pageSize = 8;
             int pageNum = (page ?? 1);
-            
             return View(rau.ToPagedList(pageNum, pageSize));
         }
         public ActionResult LienHe()

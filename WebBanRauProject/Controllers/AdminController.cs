@@ -224,26 +224,32 @@ namespace WebBanRauProject.Controllers
             var sp = data.SANPHAMs.First(k => k.MASP == id);
             ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
             ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
-            if (fileupload == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    //Luu ten file
-                    var fileName = Path.GetFileName(fileupload.FileName);
-                    //Luu duong dan File
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
-                    //Kiem tra hinh da ton tai chua\
-                    if (System.IO.File.Exists(path))
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    else
-                        fileupload.SaveAs(path);//Luu file vao duong dan
 
-                    sp.ANHSP = fileName;
+                try
+                {
+                    if (fileupload != null)
+                    {
+                        //Luu ten file
+                        var fileName = Path.GetFileName(fileupload.FileName);
+                        //Luu duong dan File
+                        var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                        //Kiem tra hinh da ton tai chua\
+                        if (System.IO.File.Exists(path))
+                            ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                        else
+                            fileupload.SaveAs(path);//Luu file vao duong dan
+
+                        sp.ANHSP = fileName;
+                    }
+
                 }
+                catch (Exception)
+                {
+                    ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+                }
+
             }
 
 
@@ -439,30 +445,38 @@ namespace WebBanRauProject.Controllers
             var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
             return View(mon);
         }
+        
         [HttpPost]
         public ActionResult SuaMonAn(int id, FormCollection collection, HttpPostedFileBase fileupload)
         {
             var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
-            if (fileupload == null)
+            
+            if (ModelState.IsValid)
             {
-                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                
+                try
                 {
-                    //Luu ten file
-                    var fileName = Path.GetFileName(fileupload.FileName);
-                    //Luu duong dan File
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
-                    //Kiem tra hinh da ton tai chua\
-                    if (System.IO.File.Exists(path))
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    else
-                        fileupload.SaveAs(path);//Luu file vao duong dan
+                    if (fileupload != null)
+                    {
+                        //Luu ten file
+                        var fileName = Path.GetFileName(fileupload.FileName);
+                        //Luu duong dan File
+                        var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                        //Kiem tra hinh da ton tai chua\
+                        if (System.IO.File.Exists(path))
+                            ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                        else
+                            fileupload.SaveAs(path);//Luu file vao duong dan
 
-                    mon.HINHANH = fileName;
+                        mon.HINHANH = fileName;
+                    }
+                        
                 }
+                catch (Exception)
+                {
+                    ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+                }
+
             }
 
 
@@ -668,6 +682,24 @@ namespace WebBanRauProject.Controllers
                 }
             }
             return RedirectToAction("NCC");
+        }
+        [HttpGet]
+        public ActionResult DoiMatKhau()
+        {
+            //lay doi tuong
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            return View(ad);
+        }
+        [HttpPost]
+        public ActionResult DoiMatKhau(int id, FormCollection collection)
+        {
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            ad.PasswordAdmin = collection["PasswordAdmin"];
+            var admin = data.Admins.First(k => k.ID == ad.ID);
+            admin.PasswordAdmin = ad.PasswordAdmin;
+            data.SubmitChanges();
+
+            return RedirectToAction("Index");
         }
 
     }

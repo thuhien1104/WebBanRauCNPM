@@ -4,63 +4,109 @@
     ViewBag.Title = "XoaNCC";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Nhà cung cấp</h2>
-
-<h3>Bạn có muốn xóa nhà cung cấp này?</h3>
-<div>
-  
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên nhà cung cấp:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TENCC)
-        </dd>
-
-        <dt>
-            Hình ảnh:
-        </dt>
-
-        <dd>
-            <img src="@Url.Content("~/images/"+  Model.HINHANH)" width="120px" />
-        </dd>
-
-
-        <dt>
-           Địa chỉ:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DIACHI)
-        </dd>
-
-        <dt>
-           Điện thoại:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DIENTHOAI)
-        </dd>
-
-        <dt>
-           Mô tả:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MOTA)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Trở về", "NCC")
-        </div>
+<style>
+    #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-top: 20px;
+        margin-left: 400px;
     }
-</div>
+
+        #table td, #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 22px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: white;
+            color: black;
+        }
+</style>
+
+<h2 style="color: brown ; font-size:20px; text-align:center">NHÀ CUNG CẤP</h2>
+
+
+<table id="table">
+    <tr>
+        <th>
+            Tên nhà cung cấp:
+        </th>
+
+        <td>
+            @Html.DisplayFor(model => model.TENCC)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Hình ảnh:
+        </th>
+
+        <td>
+            <img src="@Url.Content("~/images/"+  Model.HINHANH)" width="120px" />
+        </td>
+
+    </tr>    
+
+     <tr>
+         <th>
+             Địa chỉ:
+         </th>
+
+         <td>
+             @Html.DisplayFor(model => model.DIACHI)
+         </td>
+     </tr>
+
+    <tr>
+        <th>
+            Điện thoại:
+        </th>
+
+        <td>
+            @Html.DisplayFor(model => model.DIENTHOAI)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Mô tả:
+        </th>
+
+        <td>
+            @Html.DisplayFor(model => model.MOTA)
+        </td>
+    </tr>    
+
+        
+
+
+</table>
+
+<h3 style="color: brown ; font-size:20px; text-align:center; margin-top:7px">Bạn có muốn xóa nhà cung cấp này?</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color" align="center">
+        <input type="submit" value="XÓA" class="btn btn-default" />
+        <button class="btn btn-default">
+            @Html.ActionLink("TRỞ VỀ", "NCC")
+        </button>
+
+    </div>
+}
+

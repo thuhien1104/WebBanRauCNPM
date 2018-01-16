@@ -5,27 +5,35 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<h2 style="color: brown ; font-size:20px">
+    NHÀ CUNG CẤP
+</h2>
 
-@Html.ActionLink("Thêm", "ThemNCC") 
+<button style="margin-top:10px">
+    <p style="font-size:25px; color:cornflowerblue">
+        @Html.ActionLink("THÊM MỚI", "ThemNCC") 
+    </p>
+</button>
 
-<table class="table">
+
+<table id="table">
     <thead>
         <tr>
             
             
-            <th style="width:200px">Tên nhà cung cấp</th>
-            <th style="width:200px">Địa chỉ</th>
-            <th style="width:200px">Hình ảnh</th>
+            <th style="width:200px;text-align:center">Tên nhà cung cấp</th>
+            <th style="width:200px;text-align:center">Địa chỉ</th>
+            <th style="width:200px;text-align:center">Hình ảnh</th>
 
-            <th style="width:200px">Số điện thoại</th>
-            <th style="width:200px">Mô tả</th>
-            <th style="width:200px">Chức năng</th>
+            <th style="width:200px;text-align:center">Số điện thoại</th>
+            <th style="width:200px;text-align:center">Mô tả</th>
+            <th style="width:200px;text-align:center">Chức năng</th>
   
         </tr>
     </thead>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="text-align:center">
         <td>
             @Html.DisplayFor(modelItem => item.TENCC)
         </td>

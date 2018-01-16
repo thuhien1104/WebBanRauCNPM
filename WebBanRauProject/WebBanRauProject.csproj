@@ -279,6 +279,7 @@
     <Content Include="images\rau_song.jpg" />
     <Content Include="images\rau_xa_lach.jpg" />
     <Content Include="images\son.jpg" />
+    <Content Include="images\thuhien.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -395,6 +396,7 @@
     <Content Include="Views\Admin\XoaNCC.cshtml" />
     <Content Include="Views\Admin\SuaNCC.cshtml" />
     <Content Include="Views\RauShop\NhaCC.cshtml" />
+    <Content Include="Views\Admin\DoiMatKhau.cshtml" />
     <Content Include="Views\RauShop\Spbanchay.cshtml" />
   </ItemGroup>
   <ItemGroup>
