@@ -22,10 +22,10 @@ namespace WebBanRauProject.Controllers
             }
             else
                 return RedirectToAction("Login");
-            
+
         }
-        
-       
+
+
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
@@ -225,26 +225,32 @@ namespace WebBanRauProject.Controllers
             var sp = data.SANPHAMs.First(k => k.MASP == id);
             ViewBag.MaLoai = new SelectList(data.LOAIRAUs.ToList().OrderBy(n => n.TENLOAI), "MaLoai", "TenLoai");
             ViewBag.MaNCC = new SelectList(data.NHACUNGCAPs.ToList().OrderBy(n => n.TENCC), "MaNCC", "TenCC");
-            if (fileupload == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    //Luu ten file
-                    var fileName = Path.GetFileName(fileupload.FileName);
-                    //Luu duong dan File
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
-                    //Kiem tra hinh da ton tai chua\
-                    if (System.IO.File.Exists(path))
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    else
-                        fileupload.SaveAs(path);//Luu file vao duong dan
 
-                    sp.ANHSP = fileName;
+                try
+                {
+                    if (fileupload != null)
+                    {
+                        //Luu ten file
+                        var fileName = Path.GetFileName(fileupload.FileName);
+                        //Luu duong dan File
+                        var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                        //Kiem tra hinh da ton tai chua\
+                        if (System.IO.File.Exists(path))
+                            ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                        else
+                            fileupload.SaveAs(path);//Luu file vao duong dan
+
+                        sp.ANHSP = fileName;
+                    }
+
                 }
+                catch (Exception)
+                {
+                    ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+                }
+
             }
 
 
@@ -280,7 +286,7 @@ namespace WebBanRauProject.Controllers
             ViewBag.ChuaThanhToan = "Chưa thanh toán";
             ViewBag.DaGiaoHang = "Đã giao hàng";
             ViewBag.ChuaGiaoHang = "Chưa giao hàng";
-            List<DONDATHANG> lstDonHang = data.DONDATHANGs.OrderByDescending(d=>d.NGAYDAT).ToList();
+            List<DONDATHANG> lstDonHang = data.DONDATHANGs.OrderByDescending(d => d.NGAYDAT).ToList();
             return View(lstDonHang);
         }
         public ActionResult ChiTietDonHang(int id)
@@ -309,7 +315,7 @@ namespace WebBanRauProject.Controllers
                 {
                     var sp = data.SANPHAMs.First(k => k.MASP == item.MASP);
                     sp.SOLUONGTON -= item.SOLUONG;
-                    UpdateModel(sp);                    
+                    UpdateModel(sp);
                     data.SubmitChanges();
                 }
                 var donhang = data.DONDATHANGs.Where(dh => dh.MADH == id).First();
@@ -433,37 +439,45 @@ namespace WebBanRauProject.Controllers
             return View(mon);
         }
 
-        
+
         public ActionResult SuaMonAn(int id)
         {
             //lay doi tuong
             var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
             return View(mon);
         }
+        
         [HttpPost]
         public ActionResult SuaMonAn(int id, FormCollection collection, HttpPostedFileBase fileupload)
         {
             var mon = data.QuanLyGoiYMonAns.First(k => k.MASO == id);
-            if (fileupload == null)
+            
+            if (ModelState.IsValid)
             {
-                ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                
+                try
                 {
-                    //Luu ten file
-                    var fileName = Path.GetFileName(fileupload.FileName);
-                    //Luu duong dan File
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
-                    //Kiem tra hinh da ton tai chua\
-                    if (System.IO.File.Exists(path))
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    else
-                        fileupload.SaveAs(path);//Luu file vao duong dan
+                    if (fileupload != null)
+                    {
+                        //Luu ten file
+                        var fileName = Path.GetFileName(fileupload.FileName);
+                        //Luu duong dan File
+                        var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                        //Kiem tra hinh da ton tai chua\
+                        if (System.IO.File.Exists(path))
+                            ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                        else
+                            fileupload.SaveAs(path);//Luu file vao duong dan
 
-                    mon.HINHANH = fileName;
+                        mon.HINHANH = fileName;
+                    }
+                        
                 }
+                catch (Exception)
+                {
+                    ViewBag.Thongbao = "Vui lòng chọn ảnh cho sản phẩm";
+                }
+
             }
 
 
@@ -518,7 +532,7 @@ namespace WebBanRauProject.Controllers
             }
             return View();
         }
-        
+
         public ActionResult XoaAdmin(int id)
         {
             //lấy đối tượng :
@@ -531,8 +545,6 @@ namespace WebBanRauProject.Controllers
             }
             return View(ad);
         }
-
-        }
         public ActionResult NCC()
         {
             return View(data.NHACUNGCAPs.ToList());
@@ -542,7 +554,7 @@ namespace WebBanRauProject.Controllers
         {
             NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
             ViewBag.MANCC = ncc.MANCC;
-            if(ncc==null)
+            if (ncc == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -589,10 +601,10 @@ namespace WebBanRauProject.Controllers
                 }
                 return RedirectToAction("ThemNCC");
             }
-            
+
             return View();
-            
-            
+
+
         }
 
         [HttpGet]
@@ -625,7 +637,7 @@ namespace WebBanRauProject.Controllers
 
         public ActionResult SuaNCC(int id)
         {
-           
+
             NHACUNGCAP ncc = data.NHACUNGCAPs.SingleOrDefault(n => n.MANCC == id);
             ViewBag.MANCC = ncc.MANCC;
             if (ncc == null)
@@ -633,12 +645,12 @@ namespace WebBanRauProject.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-  
+
             return View(ncc);
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult SuaNCC(NHACUNGCAP ncc,HttpPostedFileBase fileUploat)
+        public ActionResult SuaNCC(NHACUNGCAP ncc, HttpPostedFileBase fileUploat)
         {
             if (fileUploat == null)
             {
@@ -670,6 +682,24 @@ namespace WebBanRauProject.Controllers
                 }
             }
             return RedirectToAction("NCC");
+        }
+        [HttpGet]
+        public ActionResult DoiMatKhau()
+        {
+            //lay doi tuong
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            return View(ad);
+        }
+        [HttpPost]
+        public ActionResult DoiMatKhau(int id, FormCollection collection)
+        {
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            ad.PasswordAdmin = collection["PasswordAdmin"];
+            var admin = data.Admins.First(k => k.ID == ad.ID);
+            admin.PasswordAdmin = ad.PasswordAdmin;
+            data.SubmitChanges();
+
+            return RedirectToAction("Index");
         }
 
     }

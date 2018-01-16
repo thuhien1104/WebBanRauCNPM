@@ -89,6 +89,14 @@ namespace WebBanRauProject.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<SPBanChay> SPBanChays
+		{
+			get
+			{
+				return this.GetTable<SPBanChay>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Admin> Admins
 		{
 			get
@@ -158,6 +166,141 @@ namespace WebBanRauProject.Models
 			get
 			{
 				return this.GetTable<SANPHAM>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SPBanChay")]
+	public partial class SPBanChay
+	{
+		
+		private int _MASP;
+		
+		private string _TENSP;
+		
+		private System.Nullable<decimal> _GIABAN;
+		
+		private string _ANHSP;
+		
+		private System.Nullable<System.DateTime> _NGAYCAPNHAT;
+		
+		private System.Nullable<double> _SOLUONGTON;
+		
+		private System.Nullable<double> _SOLUOMHMUA;
+		
+		public SPBanChay()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MASP", DbType="Int NOT NULL")]
+		public int MASP
+		{
+			get
+			{
+				return this._MASP;
+			}
+			set
+			{
+				if ((this._MASP != value))
+				{
+					this._MASP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENSP", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string TENSP
+		{
+			get
+			{
+				return this._TENSP;
+			}
+			set
+			{
+				if ((this._TENSP != value))
+				{
+					this._TENSP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIABAN", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> GIABAN
+		{
+			get
+			{
+				return this._GIABAN;
+			}
+			set
+			{
+				if ((this._GIABAN != value))
+				{
+					this._GIABAN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANHSP", DbType="VarChar(30)")]
+		public string ANHSP
+		{
+			get
+			{
+				return this._ANHSP;
+			}
+			set
+			{
+				if ((this._ANHSP != value))
+				{
+					this._ANHSP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAPNHAT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYCAPNHAT
+		{
+			get
+			{
+				return this._NGAYCAPNHAT;
+			}
+			set
+			{
+				if ((this._NGAYCAPNHAT != value))
+				{
+					this._NGAYCAPNHAT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUONGTON", DbType="Float")]
+		public System.Nullable<double> SOLUONGTON
+		{
+			get
+			{
+				return this._SOLUONGTON;
+			}
+			set
+			{
+				if ((this._SOLUONGTON != value))
+				{
+					this._SOLUONGTON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOLUOMHMUA", DbType="Float")]
+		public System.Nullable<double> SOLUOMHMUA
+		{
+			get
+			{
+				return this._SOLUOMHMUA;
+			}
+			set
+			{
+				if ((this._SOLUOMHMUA != value))
+				{
+					this._SOLUOMHMUA = value;
+				}
 			}
 		}
 	}
@@ -1285,6 +1428,8 @@ namespace WebBanRauProject.Models
 		
 		private string _MOTA;
 		
+		private string _HINHANH;
+		
 		private EntitySet<SANPHAM> _SANPHAMs;
 		
     #region Extensibility Method Definitions
@@ -1301,6 +1446,8 @@ namespace WebBanRauProject.Models
     partial void OnDIENTHOAIChanged();
     partial void OnMOTAChanging(string value);
     partial void OnMOTAChanged();
+    partial void OnHINHANHChanging(string value);
+    partial void OnHINHANHChanged();
     #endregion
 		
 		public NHACUNGCAP()
@@ -1405,6 +1552,26 @@ namespace WebBanRauProject.Models
 					this._MOTA = value;
 					this.SendPropertyChanged("MOTA");
 					this.OnMOTAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HINHANH", DbType="VarChar(30)")]
+		public string HINHANH
+		{
+			get
+			{
+				return this._HINHANH;
+			}
+			set
+			{
+				if ((this._HINHANH != value))
+				{
+					this.OnHINHANHChanging(value);
+					this.SendPropertyChanging();
+					this._HINHANH = value;
+					this.SendPropertyChanged("HINHANH");
+					this.OnHINHANHChanged();
 				}
 			}
 		}
