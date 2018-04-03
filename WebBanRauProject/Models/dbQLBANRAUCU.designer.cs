@@ -22,7 +22,7 @@ namespace WebBanRauProject.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QLBANRAUCU")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="zxcvbnm")]
 	public partial class dbQLBANRAUCUDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -60,7 +60,7 @@ namespace WebBanRauProject.Models
     #endregion
 		
 		public dbQLBANRAUCUDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRAUCUConnectionString3"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["zxcvbnmConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -696,6 +696,8 @@ namespace WebBanRauProject.Models
 		
 		private System.Nullable<int> _MAKH;
 		
+		private System.Nullable<decimal> _TongTien;
+		
 		private EntitySet<CHITIETDONHANG> _CHITIETDONHANGs;
 		
 		private EntityRef<KHACHHANG> _KHACHHANG;
@@ -716,6 +718,8 @@ namespace WebBanRauProject.Models
     partial void OnNGAYGIAOChanged();
     partial void OnMAKHChanging(System.Nullable<int> value);
     partial void OnMAKHChanged();
+    partial void OnTongTienChanging(System.Nullable<decimal> value);
+    partial void OnTongTienChanged();
     #endregion
 		
 		public DONDATHANG()
@@ -845,6 +849,26 @@ namespace WebBanRauProject.Models
 					this._MAKH = value;
 					this.SendPropertyChanged("MAKH");
 					this.OnMAKHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TongTien
+		{
+			get
+			{
+				return this._TongTien;
+			}
+			set
+			{
+				if ((this._TongTien != value))
+				{
+					this.OnTongTienChanging(value);
+					this.SendPropertyChanging();
+					this._TongTien = value;
+					this.SendPropertyChanged("TongTien");
+					this.OnTongTienChanged();
 				}
 			}
 		}

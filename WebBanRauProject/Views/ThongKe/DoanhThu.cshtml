@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebBanRauProject.Models.DONDATHANG>
+@{
+    ViewBag.Title = "DoanhThu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DoanhThu</h2>
+<form>
+    <input type="date" name="Date"/>
+    <input type="submit" name="Submit" value="Xem"/>
+</form>
+
+<table>
+    <tr>
+        <th>
+            Mã đơn hàng
+        </th>
+        <th>
+            Ngày giao
+        </th>
+        <th>
+            Tiền đơn hàng
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @item.MADH
+            </th>
+            <th>
+                @item.NGAYGIAO
+            </th>
+            <th>
+                @item.TongTien
+            </th>
+        </tr>
+    }
+    
+</table>
+

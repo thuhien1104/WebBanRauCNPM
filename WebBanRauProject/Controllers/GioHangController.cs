@@ -162,6 +162,7 @@ namespace WebBanRauProject.Controllers
             {
                 ddh.TINHTRANGGIAOHANG = false;
                 ddh.DATHANHTOAN = false;
+                ddh.TongTien = (decimal) TongTien();
                 data.DONDATHANGs.InsertOnSubmit(ddh);
                 data.SubmitChanges();
                 //Them chi tiet don hang
@@ -173,8 +174,10 @@ namespace WebBanRauProject.Controllers
                     ctdh.SOLUONG = item.iSoLuong;
                     ctdh.DONGIA = (decimal)item.dGiaBan;
                     data.CHITIETDONHANGs.InsertOnSubmit(ctdh);
+                    
 
                 }
+                
                 data.SubmitChanges();
                 Session["GioHang"] = null;
                 return RedirectToAction("Xacnhandonhang");

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Facebook;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -172,6 +174,59 @@ namespace WebBanRauProject.Controllers
             return View(sp.ToList());
         }
        
+        private Uri RedirectUri {
+            get
+            {
+                var uriBuilder = new UriBuilder();
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallBack");
+                return uriBuilder.Uri;
+            }
+        }
+        public ActionResult FaceBookLogin()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppID"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                reponse_type = "code",
+                scope = "email",
+            });
+            return Redirect(loginUrl.AbsoluteUri);
+        }
+
+        public ActionResult FacebookCallBack(string code)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token",new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppID"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+            });
+
+            var accessToken = result.access_token;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                fb.AccessToken = accessToken;
+
+                dynamic me = fb.Get("me?fields=first_name,last_name,email");
+                string email = me.email;
+                string first_name = me.first_name;
+                string last_name = me.last_name;
+
+                KHACHHANG kh = new KHACHHANG();
+                kh.HOTEN = first_name + " " + last_name;
+                kh.DiachiKH = email;
+                data.KHACHHANGs.InsertOnSubmit(kh);
+                data.SubmitChanges();
+            }
+            return Redirect("/");
+        }
     }
     
 }
