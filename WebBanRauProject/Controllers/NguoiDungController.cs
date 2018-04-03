@@ -59,13 +59,6 @@ namespace WebBanRauProject.Controllers
             }
             else
             {
-                KHACHHANG temp = data.KHACHHANGs.First(k => k.TAIKHOAN == tendn);
-                if(temp != null)
-                {
-                    ViewData["Loi7"] = "Tên đăng nhập đã tồn tại";
-                }
-                else
-                {
                     kh.HOTEN = hoten;
                     kh.TAIKHOAN = tendn;
                     kh.MATKHAU = matkhau;
@@ -75,7 +68,6 @@ namespace WebBanRauProject.Controllers
                     data.KHACHHANGs.InsertOnSubmit(kh);
                     data.SubmitChanges();
                     return RedirectToAction("DangNhap");
-                }
                 
             }
 
