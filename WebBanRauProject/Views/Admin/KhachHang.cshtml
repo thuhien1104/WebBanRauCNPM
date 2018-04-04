@@ -6,45 +6,53 @@
 
 <h2 style="color: brown ; font-size:20px; text-align:center">Quản lý khách hàng</h2>
 
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+        Data Table
+        <span class="label label-info pull-right">@Model.Count() khách hàng</span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="dataTable">
+            <thead>
+                <tr>
+                    <th style="text-align: center; width: 15%">Họ tên</th>
+                    <th style="text-align: center; width: 15%">Tài khoản</th>
+                    <th style="text-align: center; width: 15%">Mật khẩu</th>
+                    <th style="text-align: center; width: 10%">Ngày sinh</th>
+                    <th style="text-align: center; width: 15%">Địa chỉ</th>
+                    <th style="text-align: center; width: 15%">Điện thoại</th>
+                    <th style="text-align: center; width: 15%">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOTEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TAIKHOAN)
+                    </td>
 
-<table id="table">
-    <tr>
-        
-        <th style="text-align:center; width:15%">Họ tên</th>
-        <th style="text-align:center; width:15%">Tài khoản</th>
-        <th style="text-align:center; width:15%">Mật khẩu</th>
-        <th style="text-align:center; width:10%">Ngày sinh</th>
-        <th style="text-align:center; width:15%">Địa chỉ</th>
-        <th style="text-align:center; width:15%">Điện thoại</th>
-        <th style="text-align:center; width:15%">Chức năng</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HOTEN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TAIKHOAN)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.MATKHAU)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NGAYSINH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiachiKH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DIENTHOAIKH)
-            </td>
-            <td>
-                @Html.ActionLink("Chi tiết", "ChitietKhachHang", new { makh = item.MAKH }) 
-            </td>
-        </tr>
-    }
-
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MATKHAU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYSINH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiachiKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAIKH)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chi tiết", "ChitietKhachHang", new {makh = item.MAKH})
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div>

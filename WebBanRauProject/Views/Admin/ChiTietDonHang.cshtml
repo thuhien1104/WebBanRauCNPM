@@ -35,43 +35,49 @@
             color: black;
         }
 </style>
-
+@Html.BeginForm(){
 <h2 style="color: brown ; font-size:20px; text-align:center">CHI TIẾT ĐƠN HÀNG</h2>
 <table id="table">
-            <tr>
-                <th>
-                    Tên sản phẩm
-                </th>
-                <th>
-                    Số lượng
-                </th>
-                <th>
-                    Giá tiền
-                </th>
-            </tr>
+    <tr>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Giá tiền
+        </th>
+    </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SOLUONG)
-                        @ViewBag.ThongBao
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DONGIA)
-                    </td>
-                </tr>
-            }
-        </table>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10" style="left:315px">
-                <input type="submit" value="XÁC NHẬN ĐƠN HÀNG" class="btn btn-default" />
-                <button class="btn btn-default">
-                    @Html.ActionLink("TRỞ VỀ", "DanhSachDonHang")
-                </button>
-            </div>
-        </div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+                @ViewBag.ThongBao
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONGIA)
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10" style="left: 315px">
+         
+        <input type="submit" value="XÁC NHẬN ĐƠN HÀNG" class="btn btn-default"/>
+        
+        <button class="btn btn-default">
+            @Html.ActionLink("TRỞ VỀ", "DanhSachDonHang")
+        </button>
+    </div>
+</div>
+
     
+}

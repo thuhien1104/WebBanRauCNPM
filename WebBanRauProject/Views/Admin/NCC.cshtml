@@ -8,58 +8,61 @@
 <h2 style="color: brown ; font-size:20px">
     NHÀ CUNG CẤP
 </h2>
+<p>
+<button class="btn btn-success" type="button">@Html.ActionLink("THÊM MỚI", "ThemNCC")</button>
+</p>
 
-<button style="margin-top:10px">
-    <p style="font-size:25px; color:cornflowerblue">
-        @Html.ActionLink("THÊM MỚI", "ThemNCC") 
-    </p>
-</button>
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+        Data Table
+        <span class="label label-info pull-right">@Model.Count() Nhà cung cấp</span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="dataTable">
+            <thead>
+            <tr>
+                
+                <th style="width:200px;text-align:center">Tên nhà cung cấp</th>
+                <th style="width:200px;text-align:center">Địa chỉ</th>
+                <th style="width:200px;text-align:center">Hình ảnh</th>
+
+                <th style="width:200px;text-align:center">Số điện thoại</th>
+                <th style="width:200px;text-align:center">Mô tả</th>
+                <th style="width:200px;text-align:center">Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr style="text-align:center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+
+                    <td>
+                        <img src="@Url.Content("~/images/"+item.HINHANH)" width="150px" height="150px">
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MOTA)
+                    </td>
 
 
-<table id="table">
-    <thead>
-        <tr>
+                    <td>
+                        @Html.ActionLink("Xem", "ChitietNCC", new { id=item.MANCC }) |
+                        @Html.ActionLink("Sửa", "SuaNCC", new { id = item.MANCC }) |
             
-            
-            <th style="width:200px;text-align:center">Tên nhà cung cấp</th>
-            <th style="width:200px;text-align:center">Địa chỉ</th>
-            <th style="width:200px;text-align:center">Hình ảnh</th>
+                        @Html.ActionLink("Xóa", "XoaNCC", new { id=item.MANCC })
+                    </td>
+                </tr>
+            }
 
-            <th style="width:200px;text-align:center">Số điện thoại</th>
-            <th style="width:200px;text-align:center">Mô tả</th>
-            <th style="width:200px;text-align:center">Chức năng</th>
-  
-        </tr>
-    </thead>
-
-@foreach (var item in Model) {
-    <tr style="text-align:center">
-        <td>
-            @Html.DisplayFor(modelItem => item.TENCC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIACHI)
-        </td>
-
-        <td>
-            <img src="@Url.Content("~/images/"+item.HINHANH)" width="150px" height="150px">
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.DIENTHOAI)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MOTA)
-        </td>
-
-
-        <td>
-            @Html.ActionLink("Xem", "ChitietNCC", new { id=item.MANCC }) |
-            @Html.ActionLink("Sửa", "SuaNCC", new { id = item.MANCC }) |
-            
-            @Html.ActionLink("Xóa", "XoaNCC", new { id=item.MANCC })
-        </td>
-    </tr>
-}
-
-</table>
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div>

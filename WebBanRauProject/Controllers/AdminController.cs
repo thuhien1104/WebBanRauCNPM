@@ -22,9 +22,19 @@ namespace WebBanRauProject.Controllers
             }
             else
                 return RedirectToAction("Login");
-
         }
-        
+
+        public ActionResult PartialLoginAdmin()
+        {
+            Admin ad = (Admin)Session["Taikhoanadmin"];
+            if (ad != null)
+            {
+                var admin = data.Admins.First(k => k.ID == ad.ID);
+                return PartialView(admin);
+            }
+            else
+                return RedirectToAction("Login");
+        }
         public ActionResult KhachHang()
         {
             return View(data.KHACHHANGs.ToList());
@@ -39,7 +49,9 @@ namespace WebBanRauProject.Controllers
         public ActionResult Login(FormCollection collection)
         {
             var tendn = collection["username"];
+            
             var matkhau = collection["password"];
+            ViewData["Loi"] = "";
             if (String.IsNullOrEmpty(tendn) || String.IsNullOrEmpty(matkhau))
             {
                 ViewData["Loi"] = "Không được bỏ trống tên đăng nhập,mật khẩu";
@@ -175,37 +187,37 @@ namespace WebBanRauProject.Controllers
             return View(kh);
         }
 
-        [HttpGet]
-        public ActionResult DeleteKhachHang(int makh)
+        //[HttpGet]
+        //public ActionResult DeleteKhachHang(int makh)
 
-        {
-            //lay doi tuong
-            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
-            ViewBag.MaSP = kh.MAKH;
-            if (kh == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            return View(kh);
-        }
+        //{
+        //    //lay doi tuong
+        //    KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+        //    ViewBag.MaSP = kh.MAKH;
+        //    if (kh == null)
+        //    {
+        //        Response.StatusCode = 404;
+        //        return null;
+        //    }
+        //    return View(kh);
+        //}
 
-        [HttpPost, ActionName("DeleteKhachHang")]
-        public ActionResult DeleteKH(int makh)
-        {
-            //lay doi tuong
-            KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
-            ViewBag.MaKH = kh.MAKH;
-            if (kh == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            data.KHACHHANGs.DeleteOnSubmit(kh);
-            data.SubmitChanges();
+        //[HttpPost, ActionName("DeleteKhachHang")]
+        //public ActionResult DeleteKH(int makh)
+        //{
+        //    //lay doi tuong
+        //    KHACHHANG kh = data.KHACHHANGs.SingleOrDefault(n => n.MAKH == makh);
+        //    ViewBag.MaKH = kh.MAKH;
+        //    if (kh == null)
+        //    {
+        //        Response.StatusCode = 404;
+        //        return null;
+        //    }
+        //    data.KHACHHANGs.DeleteOnSubmit(kh);
+        //    data.SubmitChanges();
 
-            return RedirectToAction("KhachHang");
-        }
+        //    return RedirectToAction("KhachHang");
+        //}
         public ActionResult Lienhe()
         {
             return null;

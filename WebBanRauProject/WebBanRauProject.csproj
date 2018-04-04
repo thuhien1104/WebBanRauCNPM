@@ -331,7 +331,34 @@
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\waypoint.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Shared\index.html" />
+    <Content Include="TemplateAdmin\bootstrap\css\bootstrap.min.css" />
+    <Content Include="TemplateAdmin\bootstrap\js\bootstrap.min.js" />
+    <Content Include="TemplateAdmin\css\colorbox\colorbox.css" />
+    <Content Include="TemplateAdmin\css\endless-landing.min.css" />
+    <Content Include="TemplateAdmin\css\endless-skin.css" />
+    <Content Include="TemplateAdmin\css\endless.css" />
+    <Content Include="TemplateAdmin\css\endless.min.css" />
+    <Content Include="TemplateAdmin\css\font-awesome.min.css" />
+    <Content Include="TemplateAdmin\css\morris.css" />
+    <Content Include="TemplateAdmin\css\pace.css" />
+    <Content Include="TemplateAdmin\js\bootstrap.min.js" />
+    <Content Include="TemplateAdmin\js\endless\endless.js" />
+    <Content Include="TemplateAdmin\js\endless\endless_dashboard.js" />
+    <Content Include="TemplateAdmin\js\jquery-1.10.2.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.colorbox.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.cookie.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.flot.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.localscroll.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.popupoverlay.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.scrollTo.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.slimscroll.min.js" />
+    <Content Include="TemplateAdmin\js\jquery.sparkline.min.js" />
+    <Content Include="TemplateAdmin\js\modernizr.min.js" />
+    <Content Include="TemplateAdmin\js\morris.min.js" />
+    <Content Include="TemplateAdmin\js\pace.min.js" />
+    <Content Include="TemplateAdmin\js\rapheal.min.js" />
+    <Content Include="TemplateAdmin\js\uncompressed\pace.js" />
+    <Content Include="TemplateAdmin\js\waypoints.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -418,6 +445,8 @@
     <Content Include="Views\RauShop\CTMonan.cshtml" />
     <Content Include="Views\RauShop\CTNhaCC.cshtml" />
     <Content Include="Views\ThongKe\DoanhThu.cshtml" />
+    <Content Include="Views\Admin\LoginPActionResult.cshtml" />
+    <Content Include="Views\Admin\PartialLoginAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +455,7 @@
     <Folder Include="fonts\webfonts\" />
     <Folder Include="Scripts\images\" />
     <Folder Include="Scripts\js\" />
+    <Folder Include="TemplateAdmin\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -458,7 +488,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63607</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44396/</IISUrl>
+          <IISUrl>http://localhost:63607/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

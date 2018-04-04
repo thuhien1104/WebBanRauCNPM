@@ -3,94 +3,77 @@
     ViewBag.Title = "DanhSachDonHang";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<br/>
+<br />
 <h2 style="color: brown ; font-size:20px">DANH SÁCH ĐƠN HÀNG</h2>
-<style>
-    #table {
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-        #table td, #table th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #table tr:hover {
-            background-color: #ddd;
-        }
-
-        #table th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #4CAF50;
-            color: white;
-        }
-</style>
-
-<table id="table">
-    <tr>
-        <th>
-            Thanh toán
-        </th>
-        <th>
-            Tình trạng giao hàng
-        </th>
-        <th>
-            Ngày đặt
-        </th>
-        <th>
-            Ngày giao
-        </th>
-        <th>
-            Tên khách hàng
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+        Data Table
+        <span class="label label-info pull-right">@Model.Count() đơn hàng</span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="dataTable">
+            <thead>
+                <tr>
+                    <th>
+                        Thanh toán
+                    </th>
+                    <th>
+                        Tình trạng giao hàng
+                    </th>
+                    <th>
+                        Ngày đặt
+                    </th>
+                    <th>
+                        Ngày giao
+                    </th>
+                    <th>
+                        Tên khách hàng
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @if (item.DATHANHTOAN == true)
-                {
-                    @ViewBag.DaThanhToan
-                }
-                else
-                {
-                    @ViewBag.ChuaThanhToan
-                }
-            </td>
-            <td>
-                @if (item.TINHTRANGGIAOHANG == true)
-                {
-                    @ViewBag.DaGiaoHang
-                }
-                else
-                {
-                    @ViewBag.ChuaGiaoHang
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NGAYDAT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NGAYGIAO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
-            </td>
-            <td>
-                @Html.ActionLink("Cập nhập", "SuaDonHang", new { id = item.MADH }) |
-                @Html.ActionLink("Xem", "ChiTietDonHang", new { id = item.MADH })
-            </td>
-        </tr>
-    }
-
-</table>
+                <tr>
+                    <td>
+                        @if (item.DATHANHTOAN == true)
+                        {
+                            @ViewBag.DaThanhToan
+                        }
+                        else
+                        {
+                            @ViewBag.ChuaThanhToan
+                        }
+                    </td>
+                    <td>
+                        @if (item.TINHTRANGGIAOHANG == true)
+                        {
+                            @ViewBag.DaGiaoHang
+                        }
+                        else
+                        {
+                            @ViewBag.ChuaGiaoHang
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYDAT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYGIAO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Cập nhập", "SuaDonHang", new { id = item.MADH }) |
+                        @Html.ActionLink("Xem", "ChiTietDonHang", new { id = item.MADH })
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div>
