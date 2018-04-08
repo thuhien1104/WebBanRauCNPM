@@ -49,6 +49,7 @@
       <Column Name="DiachiKH" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="DIENTHOAIKH" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="NGAYSINH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="KHACHHANG_DONDATHANG" Member="DONDATHANGs" ThisKey="MAKH" OtherKey="MAKH" Type="DONDATHANG" />
     </Type>
   </Table>
@@ -67,6 +68,7 @@
       <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="MOTA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HINHANH" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="NHACUNGCAP_SANPHAM" Member="SANPHAMs" ThisKey="MANCC" OtherKey="MANCC" Type="SANPHAM" />
     </Type>
   </Table>
@@ -89,6 +91,7 @@
       <Column Name="SOLUONGTON" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="SANPHAM_CHITIETDONHANG" Member="CHITIETDONHANGs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETDONHANG" />
       <Association Name="LOAIRAU_SANPHAM" Member="LOAIRAU" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAIRAU" IsForeignKey="true" />
       <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" DeleteRule="CASCADE" />

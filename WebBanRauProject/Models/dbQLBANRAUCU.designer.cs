@@ -973,6 +973,8 @@ namespace WebBanRauProject.Models
 		
 		private System.Nullable<System.DateTime> _NGAYSINH;
 		
+		private System.Nullable<bool> _TRANGTHAI;
+		
 		private EntitySet<DONDATHANG> _DONDATHANGs;
 		
     #region Extensibility Method Definitions
@@ -993,6 +995,8 @@ namespace WebBanRauProject.Models
     partial void OnDIENTHOAIKHChanged();
     partial void OnNGAYSINHChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYSINHChanged();
+    partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public KHACHHANG()
@@ -1137,6 +1141,26 @@ namespace WebBanRauProject.Models
 					this._NGAYSINH = value;
 					this.SendPropertyChanged("NGAYSINH");
 					this.OnNGAYSINHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Bit")]
+		public System.Nullable<bool> TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
 				}
 			}
 		}
@@ -1319,6 +1343,8 @@ namespace WebBanRauProject.Models
 		
 		private string _HINHANH;
 		
+		private System.Nullable<bool> _TRANGTHAI;
+		
 		private EntitySet<SANPHAM> _SANPHAMs;
 		
     #region Extensibility Method Definitions
@@ -1337,6 +1363,8 @@ namespace WebBanRauProject.Models
     partial void OnMOTAChanged();
     partial void OnHINHANHChanging(string value);
     partial void OnHINHANHChanged();
+    partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public NHACUNGCAP()
@@ -1461,6 +1489,26 @@ namespace WebBanRauProject.Models
 					this._HINHANH = value;
 					this.SendPropertyChanged("HINHANH");
 					this.OnHINHANHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Bit")]
+		public System.Nullable<bool> TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
 				}
 			}
 		}
@@ -1669,6 +1717,8 @@ namespace WebBanRauProject.Models
 		
 		private System.Nullable<int> _MANCC;
 		
+		private System.Nullable<bool> _TRANGTHAI;
+		
 		private EntitySet<CHITIETDONHANG> _CHITIETDONHANGs;
 		
 		private EntityRef<LOAIRAU> _LOAIRAU;
@@ -1697,6 +1747,8 @@ namespace WebBanRauProject.Models
     partial void OnMALOAIChanged();
     partial void OnMANCCChanging(System.Nullable<int> value);
     partial void OnMANCCChanged();
+    partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public SANPHAM()
@@ -1891,6 +1943,26 @@ namespace WebBanRauProject.Models
 					this._MANCC = value;
 					this.SendPropertyChanged("MANCC");
 					this.OnMANCCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Bit")]
+		public System.Nullable<bool> TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
 				}
 			}
 		}

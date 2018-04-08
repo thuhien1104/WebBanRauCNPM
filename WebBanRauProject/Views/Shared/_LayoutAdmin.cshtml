@@ -294,6 +294,9 @@
                         <li class="active">
                             @Html.ActionLink("QL Món ăn", "MonAn", "Admin")
                         </li>
+                        <li class="active">
+                            @Html.ActionLink("Doanh thu", "ThongKeDoanhThu", "Admin")
+                        </li>
                        
                     </ul>
 
@@ -395,14 +398,18 @@
     <script src='~/TemplateAdmin/js/jquery.slimscroll.min.js'></script>
 
     <!-- Modernizr -->
-    <script src='~/TemplateAdmin/js/modernizr.min.js'></script>
-
+<script src='~/TemplateAdmin/js/modernizr.min.js'></script>
+<!--CKEditor-->
+    <script src="~/TemplateAdmin/js/plugins/ckeditor/ckeditor.js"></script>
     <!-- Cookie -->
     <script src='~/TemplateAdmin/js/jquery.cookie.min.js'></script>
 
     <!-- Endless -->
     <script src="~/TemplateAdmin/js/endless/endless_dashboard.js"></script>
-    <script src="~/TemplateAdmin/js/endless/endless.js"></script>
-
+<script src="~/TemplateAdmin/js/endless/endless.js"></script>
+@Scripts.Render("~bundles/jquery")
+@Scripts.Render("~bundles/bootstrap")
+@RenderSection("jsFooter",required:false)̉
+@RenderSection("scripts", required: false)̉
 </body>
 </html>

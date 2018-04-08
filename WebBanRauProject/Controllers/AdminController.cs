@@ -27,13 +27,17 @@ namespace WebBanRauProject.Controllers
         public ActionResult PartialLoginAdmin()
         {
             Admin ad = (Admin)Session["Taikhoanadmin"];
-            if (ad != null)
+            if (ad!=null)
             {
                 var admin = data.Admins.First(k => k.ID == ad.ID);
                 return PartialView(admin);
             }
             else
-                return RedirectToAction("Login");
+            {
+                return View("Login");
+            }
+                
+            
         }
         public ActionResult KhachHang()
         {
@@ -79,10 +83,34 @@ namespace WebBanRauProject.Controllers
         public ActionResult Rau()
         {
             var query = from sp in data.SANPHAMs
-                        where !(from t in data.TEMPs select t.MASP).Contains(sp.MASP)
                         select sp;
             return View(query);
         }
+
+        private bool ChangeStatus(int id)
+        {
+            var rau = data.SANPHAMs.First(c => c.MASP == id);
+            rau.TRANGTHAI = !rau.TRANGTHAI;
+            UpdateModel(rau);
+            data.SubmitChanges();
+            return (bool)!rau.TRANGTHAI;
+        }
+        [HttpPost]
+        public JsonResult TrangThaiRau(int id)
+        {
+            var rau = data.SANPHAMs.First(c => c.MASP == id);
+            rau.TRANGTHAI = !rau.TRANGTHAI;
+            UpdateModel(rau);
+            data.SubmitChanges();
+            var result = rau.TRANGTHAI;
+            return Json(new
+            {
+                status = result
+            });
+
+        }
+
+
         [HttpGet]
         public ActionResult ThemmoiRau()
         {
@@ -714,6 +742,12 @@ namespace WebBanRauProject.Controllers
             return RedirectToAction("Index");
         }
 
+        //Thong ke
+        public ActionResult ThongKeDoanhThu()
+        {
+            var linq = data.DONDATHANGs.Where(a=>a.DATHANHTOAN==true).Select(a => a);
+            return View(linq);
+        }
         
     }
 

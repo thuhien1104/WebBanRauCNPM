@@ -1,0 +1,14 @@
+﻿.articles img, .members img {
+    height: 262px;
+    width: 100%;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.main-flexslider img {
+    width:100%;
+    height:350px;
+}

@@ -502,7 +502,7 @@ a {
 }
 .main-flexslider img {
   width:100%;
-  height:auto;
+  height:350px;
 }
 .main-flexslider .slides .slides {
   background-size:cover;
@@ -682,7 +682,7 @@ a {
 }
 .articles img,.members img {
     height: 262px;
-    width: 262px;
+    width: 100%;
   -webkit-border-top-left-radius:3px;
   -webkit-border-top-right-radius:3px;
   -moz-border-radius-topleft:3px;

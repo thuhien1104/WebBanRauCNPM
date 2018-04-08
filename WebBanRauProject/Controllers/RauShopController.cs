@@ -17,7 +17,7 @@ namespace WebBanRauProject.Controllers
         dbQLBANRAUCUDataContext data = new dbQLBANRAUCUDataContext();
         private List<SANPHAM> LaySanPhamMoiNhap(int count)
         {
-            return data.SANPHAMs.OrderByDescending(a => a.NGAYCAPNHAT).Take(count).ToList();
+            return data.SANPHAMs.OrderByDescending(a => a.NGAYCAPNHAT).Where(s=>s.TRANGTHAI == true).Take(count).ToList();
         }
 
         private List<SPBanChay> LaySanPhamBanChay(int count)
@@ -51,7 +51,7 @@ namespace WebBanRauProject.Controllers
         public ActionResult SanPhamTheoLoai(int id,int ? page)
         {
             //Lay 4 Rau moi nhap
-            var rau = from sp in data.SANPHAMs where sp.MALOAI == id select sp;
+            var rau = from sp in data.SANPHAMs where sp.MALOAI == id &&sp.TRANGTHAI == true select sp;
             int pageSize = 4;
             int pageNum = (page ?? 1);
    
@@ -60,13 +60,13 @@ namespace WebBanRauProject.Controllers
         //Chi tiet 1 loai Rau
         public ActionResult Details(int id)
         {
-            var rau = from sp in data.SANPHAMs where sp.MASP == id select sp;
+            var rau = from sp in data.SANPHAMs where sp.MASP == id && sp.TRANGTHAI == true select sp;
             return View(rau.Single());
         }
         //Hien thi tat ca san pham
         public ActionResult ShowAll(int ? page)
         {
-            var rau = from sp in data.SANPHAMs select sp;
+            var rau = from sp in data.SANPHAMs.Where(s => s.TRANGTHAI == true) select sp;
             int pageSize = 8;
             int pageNum = (page ?? 1);
             return View(rau.ToPagedList(pageNum, pageSize));

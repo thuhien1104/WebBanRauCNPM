@@ -4,7 +4,15 @@
     ViewBag.Title = "Rau";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@section jsFooter{
+    <script src="~/TemplateAdmin/js/controller/rauController.js"></script>
+    <script>
+        var editor = CKEDITOR.replace('txtContent',
+            {
+                customConfig: "~/TemplateAdmin/js/plugins/ckeditor/config.js"
+            });
+    </script>
+}
 <h2 style="color: brown ; font-size:20px">SẢN PHẨM</h2>
 <p>
     <button class="btn btn-success" type="button">@Html.ActionLink("Thêm mới", "ThemmoiRau")</button>
@@ -29,6 +37,7 @@
                     <th style="text-align:center;width:5%"> SL tồn</th>        
                     <th style="text-align:center;width:5%">Loại rau</th>
                     <th style="text-align:center;width:12%">Tên nhà cung cấp</th>
+                    <th style="text-align:center;width:20%">Trạng thái</th>
                     <th style="text-align:center;width:20%">Chức năng</th>
                 </tr>
             </thead>
@@ -58,6 +67,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NHACUNGCAP.TENCC)
+                    </td>
+                    <td>
+                        <a href="#" class="abc" data-id="@item.MASP">@((bool)item.TRANGTHAI?"Kích hoạt":"Khóa")</a>
                     </td>
                     <td>
                         @Html.ActionLink("Sửa", "SuaRau", new { id=item.MASP }) |

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebBanRauProject.Models.DONDATHANG>
+@{
+    ViewBag.Title = "ThongKeDoanhThu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Doanh Thu</h2>
+
+
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+        Data Table
+        <span class="label label-info pull-right">@Model.Count() đơn hàng</span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="dataTable">
+            <thead>
+                <tr>
+                    <th>
+                        Mã đơn hàng
+                    </th>
+                    <th>
+                        Ngày giao hàng
+                    </th>
+                    <th>
+                        Tên khách hàng
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="dataDoanhThu">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MADH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYGIAO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KHACHHANG.HOTEN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongTien) VNĐ
+                        </td>
+                        <td>
+                            @Html.ActionLink("Xem chi tiết", "ChiTietDonHang", new { id = item.MADH })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-overview">
+        <div class="overview-icon bg-danger">
+            <i class="fa fa-usd"></i>
+        </div>
+        <div class="overview-value">
+            <div class="h2">@Model.Sum(a => a.TongTien)</div>
+            <div class="text-muted">VNĐ</div>
+        </div>
+    </div>
+</div>
